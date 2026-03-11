@@ -1,9 +1,5 @@
 import '../styles/Planes.css';
 
-/**
- * Planes — Sección de membresías.
- */
-
 const planes = [
   {
     nombre: 'Mensual',
