@@ -1,0 +1,232 @@
+/* ============================================================
+   Planes.css — Estilos del componente Planes
+   ============================================================ */
+
+.planes {
+  padding: 6rem 0;
+  background-color: #020617;
+  position: relative;
+  overflow: hidden;
+}
+
+.planes-bg-blur {
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 24rem;
+  height: 24rem;
+  background-color: rgba(37, 99, 235, 0.1);
+  border-radius: 9999px;
+  filter: blur(48px);
+  z-index: 0;
+}
+
+.planes-container {
+  max-width: 80rem;
+  margin: 0 auto;
+  padding: 0 1.5rem;
+  position: relative;
+  z-index: 1;
+}
+
+.planes-header {
+  text-align: center;
+  margin-bottom: 4rem;
+}
+
+.planes-title {
+  font-size: 2.25rem;
+  font-weight: 800;
+  text-transform: uppercase;
+  font-style: italic;
+  letter-spacing: -0.025em;
+  color: #ffffff;
+}
+
+.planes-subtitle {
+  color: #94a3b8;
+  margin-top: 1rem;
+  font-style: italic;
+}
+
+/* Grid */
+.planes-grid {
+  display: grid;
+  gap: 2rem;
+}
+
+/* Tarjeta Plan */
+.plan-card {
+  padding: 2.5rem;
+  border-radius: 2.5rem;
+  display: flex;
+  flex-direction: column;
+  transition: all 0.5s;
+}
+
+.plan-card.normal {
+  border: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.plan-card.popular {
+  border: 2px solid #2563eb;
+  position: relative;
+  overflow: hidden;
+  z-index: 10;
+  box-shadow: 0 25px 50px rgba(30, 64, 175, 0.2);
+}
+
+/* Badge "Más Popular" */
+.plan-badge {
+  position: absolute;
+  top: 0;
+  right: 0;
+  background-color: #2563eb;
+  color: #ffffff;
+  font-size: 10px;
+  font-weight: 900;
+  padding: 0.5rem 1.5rem;
+  text-transform: uppercase;
+  letter-spacing: 0.15em;
+  border-bottom-left-radius: 1rem;
+}
+
+.plan-name {
+  font-size: 1.25rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.15em;
+  color: #60a5fa;
+  margin-bottom: 0.5rem;
+}
+
+.plan-desc {
+  color: #94a3b8;
+  font-size: 0.875rem;
+  margin-bottom: 2rem;
+  font-style: italic;
+}
+
+/* Precios */
+.plan-price-big {
+  font-weight: 900;
+  color: #ffffff;
+}
+
+.plan-price-big.size-xl { font-size: 3rem; }
+.plan-price-big.size-2xl { font-size: 2.25rem; }
+
+.plan-price-small {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: #cbd5e1;
+}
+
+.plan-price-label {
+  color: #64748b;
+  font-size: 0.875rem;
+  text-transform: uppercase;
+  font-weight: 700;
+  font-style: italic;
+}
+
+.plan-note {
+  color: #93c5fd;
+  font-size: 0.75rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  font-style: italic;
+  margin-top: 0.5rem;
+}
+
+.plan-cuota-badge {
+  display: inline-block;
+  padding: 0.25rem 0.5rem;
+  background-color: rgba(255, 255, 255, 0.1);
+  border-radius: 0.25rem;
+  color: #60a5fa;
+  font-size: 10px;
+  font-weight: 900;
+  text-transform: uppercase;
+  letter-spacing: 0.15em;
+  font-style: italic;
+  margin-top: 0.5rem;
+}
+
+/* Beneficios */
+.plan-benefits {
+  list-style: none;
+  padding: 0;
+  margin: 0 0 2.5rem 0;
+  flex-grow: 1;
+}
+
+.plan-benefits li {
+  font-size: 0.875rem;
+  font-style: italic;
+  margin-bottom: 1rem;
+}
+
+.plan-benefits li i {
+  color: #3b82f6;
+  margin-right: 0.5rem;
+}
+
+.plan-benefits.light li { color: #e2e8f0; }
+.plan-benefits.muted li { color: #94a3b8; }
+
+/* CTA Botones */
+.plan-cta {
+  display: block;
+  text-align: center;
+  padding: 1rem;
+  border-radius: 1rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.15em;
+  font-size: 0.75rem;
+  transition: all 0.3s;
+}
+
+.plan-cta.outline {
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  color: #ffffff;
+}
+
+.plan-cta.filled {
+  background-color: #2563eb;
+  color: #ffffff;
+  font-weight: 900;
+  box-shadow: 0 10px 25px rgba(37, 99, 235, 0.3);
+}
+
+/* ---- Desktop ---- */
+@media (min-width: 768px) {
+  .planes-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+
+  .plan-card.popular {
+    transform: scale(1.05);
+  }
+
+  .planes-title {
+    font-size: 3rem;
+  }
+}
+
+/* ---- Hover solo desktop ---- */
+@media (hover: hover) and (pointer: fine) {
+  .plan-card.normal:hover {
+    border-color: rgba(59, 130, 246, 0.5);
+  }
+
+  .plan-cta.outline:hover {
+    background-color: #ffffff;
+    color: #172554;
+  }
+
+  .plan-cta.filled:hover {
+    background-color: #3b82f6;
+  }
+}
