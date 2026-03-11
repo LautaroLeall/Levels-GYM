@@ -1,0 +1,168 @@
+/* ============================================================
+   Sedes.css — Estilos del componente Sedes
+   ============================================================ */
+
+.sedes {
+  padding: 6rem 0;
+  background-color: rgba(15, 23, 42, 0.5);
+}
+
+.sedes-container {
+  max-width: 80rem;
+  margin: 0 auto;
+  padding: 0 1.5rem;
+}
+
+.sedes-title {
+  font-size: 2.25rem;
+  font-weight: 800;
+  text-align: center;
+  margin-bottom: 4rem;
+  text-transform: uppercase;
+  font-style: italic;
+  color: #ffffff;
+  letter-spacing: -0.025em;
+  text-decoration: underline;
+  text-decoration-color: rgba(37, 99, 235, 0.4);
+  text-decoration-thickness: 8px;
+  text-underline-offset: 8px;
+}
+
+.sedes-grid {
+  display: grid;
+  gap: 3rem;
+}
+
+/* Tarjeta Sede */
+.sede-card {
+  overflow: hidden;
+  border-radius: 2.5rem;
+  border: none;
+  box-shadow: 0 25px 50px rgba(0, 0, 0, 0.25);
+}
+
+.sede-img-wrapper {
+  height: 16rem;
+  overflow: hidden;
+  position: relative;
+}
+
+.sede-img-wrapper img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.7s;
+}
+
+.sede-img-overlay {
+  position: absolute;
+  inset: 0;
+  mix-blend-mode: multiply;
+}
+
+.sede-img-overlay.yb { background-color: rgba(30, 58, 138, 0.4); }
+.sede-img-overlay.centro { background-color: rgba(2, 6, 23, 0.4); }
+
+.sede-img-name {
+  position: absolute;
+  bottom: 1.5rem;
+  left: 2.5rem;
+  font-size: 1.875rem;
+  font-weight: 900;
+  font-style: italic;
+  text-transform: uppercase;
+  color: #ffffff;
+  letter-spacing: -0.025em;
+}
+
+.sede-info {
+  padding: 2.5rem;
+}
+
+.sede-address {
+  color: #94a3b8;
+  margin-bottom: 1.5rem;
+  display: flex;
+  align-items: flex-start;
+  font-style: italic;
+  line-height: 1.4;
+}
+
+.sede-address i {
+  color: #3b82f6;
+  margin-top: 0.25rem;
+  margin-right: 0.75rem;
+}
+
+/* Horarios card */
+.sede-horarios {
+  margin-bottom: 2rem;
+  padding: 1.5rem;
+  background-color: rgba(255, 255, 255, 0.05);
+  border-radius: 1.5rem;
+  border: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.sede-horarios-label {
+  font-size: 0.75rem;
+  font-weight: 900;
+  text-transform: uppercase;
+  letter-spacing: 0.15em;
+  color: #60a5fa;
+  margin-bottom: 1rem;
+  font-style: italic;
+}
+
+.sede-horario-row {
+  display: flex;
+  justify-content: space-between;
+  font-size: 0.875rem;
+  font-style: italic;
+  margin-bottom: 0.5rem;
+}
+
+.sede-horario-row.normal { color: #ffffff; }
+.sede-horario-row.normal span:first-child { opacity: 0.6; }
+.sede-horario-row.sabado {
+  color: #60a5fa;
+  font-weight: 700;
+  text-decoration: underline;
+  text-decoration-color: rgba(59, 130, 246, 0.3);
+}
+.sede-horario-row.sabado span:first-child { opacity: 0.8; }
+
+/* GPS Botón */
+.sede-gps-btn {
+  display: block;
+  text-align: center;
+  padding: 1rem;
+  background-color: rgba(37, 99, 235, 0.1);
+  border: 1px solid rgba(37, 99, 235, 0.4);
+  border-radius: 1rem;
+  font-weight: 700;
+  color: #60a5fa;
+  transition: all 0.3s;
+  font-style: italic;
+  text-transform: uppercase;
+  letter-spacing: 0.15em;
+  font-size: 0.75rem;
+}
+
+/* ---- Desktop ---- */
+@media (min-width: 768px) {
+  .sedes-grid {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+/* ---- Hover solo desktop ---- */
+@media (hover: hover) and (pointer: fine) {
+  .sede-card:hover .sede-img-wrapper img {
+    transform: scale(1.1);
+  }
+
+  .sede-gps-btn:hover {
+    background-color: #2563eb;
+    color: #ffffff;
+  }
+}
