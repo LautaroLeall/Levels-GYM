@@ -1,0 +1,172 @@
+.navbar {
+  position: fixed;
+  width: 100%;
+  z-index: 100;
+  background-color: rgba(2, 6, 23, 0.6);
+  backdrop-filter: blur(24px);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.navbar-container {
+  max-width: 80rem;
+  margin: 0 auto;
+  padding: 0 1.5rem;
+  height: 5rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+/* Logo */
+.navbar-logo {
+  display: flex;
+  align-items: center;
+}
+
+.navbar-logo img {
+  position: relative;
+  width: 2.2rem;
+  height: 2.2rem;
+  object-fit: contain;
+  rotate: 10deg;
+  bottom: 3.5px;
+}
+
+.navbar-logo span {
+  font-size: 1.4rem;
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 0.25em;
+  color: #ffffff;
+}
+
+/* Links Desktop */
+.navbar-links {
+  display: none;
+  align-items: center;
+  gap: 2rem;
+  font-weight: 500;
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+}
+
+.navbar-links a {
+  color: #ffffff;
+  transition: color 0.3s;
+}
+
+.navbar-links a.highlight {
+  color: #60a5fa;
+  font-weight: 700;
+}
+
+.navbar-links .cta-btn {
+  background-color: #2563eb;
+  padding: 0.625rem 1.5rem;
+  border-radius: 9999px;
+  color: #ffffff;
+  transition: background-color 0.3s;
+  box-shadow: 0 10px 25px rgba(30, 64, 175, 0.2);
+}
+
+/* Hamburger */
+.navbar-hamburger {
+  display: block;
+  font-size: 1.5rem;
+  color: #ffffff;
+  background: none;
+  border: none;
+  cursor: pointer;
+}
+
+/* Mobile Menu Overlay */
+.mobile-menu {
+  position: fixed;
+  inset: 0;
+  background-color: #020617;
+  z-index: 150;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 2rem;
+  font-size: 1.5rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  font-style: italic;
+  color: #ffffff;
+
+  /* Animación de entrada */
+  animation: slideDown 0.4s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+.mobile-menu.closing {
+  animation: slideUp 0.3s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+@keyframes slideDown {
+  from {
+    opacity: 0;
+    transform: translateY(-100%);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes slideUp {
+  from {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  to {
+    opacity: 0;
+    transform: translateY(-100%);
+  }
+}
+
+.mobile-menu a {
+  color: #ffffff;
+  transition: color 0.3s;
+}
+
+.mobile-menu a.cta-mobile {
+  color: #60a5fa;
+}
+
+.mobile-menu .close-btn {
+  position: absolute;
+  top: 2rem;
+  right: 2rem;
+  font-size: 2rem;
+  background: none;
+  border: none;
+  color: #ffffff;
+  cursor: pointer;
+}
+
+/* Desktop */
+@media (min-width: 1024px) {
+  .navbar-links {
+    display: flex;
+  }
+
+  .navbar-hamburger {
+    display: none;
+  }
+}
+
+/* Hover solo desktop */
+@media (hover: hover) and (pointer: fine) {
+  .navbar-links a:hover {
+    color: #60a5fa;
+  }
+
+  .navbar-links .cta-btn:hover {
+    background-color: #3b82f6;
+  }
+}
