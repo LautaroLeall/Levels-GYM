@@ -1,8 +1,5 @@
 import '../styles/Horarios.css';
 
-/**
- * Horarios — Franja azul con horarios generales y sábados por sede.
- */
 export default function Horarios() {
   return (
     <section className="horarios">
