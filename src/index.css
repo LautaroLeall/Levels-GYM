@@ -1,68 +1,103 @@
-:root {
-  font-family: system-ui, Avenir, Helvetica, Arial, sans-serif;
-  line-height: 1.5;
-  font-weight: 400;
+@import "tailwindcss";
 
-  color-scheme: light dark;
-  color: rgba(255, 255, 255, 0.87);
-  background-color: #242424;
-
-  font-synthesis: none;
-  text-rendering: optimizeLegibility;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-}
-
-a {
-  font-weight: 500;
-  color: #646cff;
-  text-decoration: inherit;
-}
-a:hover {
-  color: #535bf2;
-}
+/* ============================================================
+   ESTILOS GLOBALES — Levels GYM
+   ============================================================ */
 
 body {
-  margin: 0;
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  background-color: #020617;
+  color: #e2e8f0;
+  overflow-x: hidden;
+}
+
+/* ----- Utilidades Custom ----- */
+.bg-levels-deep {
+  background: radial-gradient(circle at top right, #1e40af, #020617 60%);
+}
+
+.blue-gradient-text {
+  background: linear-gradient(to right, #60a5fa, #2563eb);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.glass {
+  background: rgba(255, 255, 255, 0.03);
+  backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+/* ----- Carrusel Infinito ----- */
+.carousel-track {
   display: flex;
-  place-items: center;
-  min-width: 320px;
-  min-height: 100vh;
+  width: max-content;
+  animation: scroll 40s linear infinite;
 }
 
-h1 {
-  font-size: 3.2em;
-  line-height: 1.1;
+.carousel-track:hover {
+  animation-play-state: paused;
 }
 
-button {
-  border-radius: 8px;
-  border: 1px solid transparent;
-  padding: 0.6em 1.2em;
-  font-size: 1em;
-  font-weight: 500;
-  font-family: inherit;
-  background-color: #1a1a1a;
-  cursor: pointer;
-  transition: border-color 0.25s;
-}
-button:hover {
-  border-color: #646cff;
-}
-button:focus,
-button:focus-visible {
-  outline: 4px auto -webkit-focus-ring-color;
+@keyframes scroll {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
 }
 
-@media (prefers-color-scheme: light) {
-  :root {
-    color: #213547;
-    background-color: #ffffff;
+.carousel-container {
+  overflow-x: auto;
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+  cursor: grab;
+}
+.carousel-container:active { cursor: grabbing; }
+.carousel-container::-webkit-scrollbar { display: none; }
+
+/* ----- Service Cards ----- */
+.service-card {
+  transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+  position: relative;
+  overflow: hidden;
+}
+
+.service-card img {
+  transition: transform 0.7s ease;
+}
+
+.service-card::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to top, rgba(2, 6, 23, 0.9), transparent);
+  opacity: 0.8;
+  transition: opacity 0.5s ease;
+}
+
+/* ----- Logo Flotante ----- */
+@keyframes float {
+  0% { transform: translateY(0px); }
+  50% { transform: translateY(-10px); }
+  100% { transform: translateY(0px); }
+}
+.float-logo {
+  animation: float 4s ease-in-out infinite;
+}
+
+/* ============================================================
+   HOVER — Solo desktop (ratón, no touch)
+   ============================================================ */
+@media (hover: hover) and (pointer: fine) {
+  .service-card:hover {
+    transform: translateY(-10px) scale(1.02);
+    box-shadow: 0 20px 40px rgba(37, 99, 235, 0.2);
+    border-color: rgba(59, 130, 246, 0.5);
   }
-  a:hover {
-    color: #747bff;
+
+  .service-card:hover img {
+    transform: scale(1.15);
   }
-  button {
-    background-color: #f9f9f9;
+
+  .service-card:hover::after {
+    opacity: 0.6;
   }
 }
