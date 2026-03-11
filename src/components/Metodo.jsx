@@ -1,9 +1,5 @@
 import '../styles/Metodo.css';
 
-/**
- * Metodo — "El Método Levels": 3 tarjetas glass.
- */
-
 const pasos = [
   {
     numero: '01',

@@ -1,7 +1,3 @@
-/* ============================================================
-   Metodo.css — Estilos del componente Metodo
-   ============================================================ */
-
 .metodo {
   padding: 6rem 0;
   position: relative;
@@ -47,9 +43,17 @@
   border-radius: 2.5rem;
 }
 
-.metodo-card.border-blue-600 { border-top: 4px solid #2563eb; }
-.metodo-card.border-blue-500 { border-top: 4px solid #3b82f6; }
-.metodo-card.border-blue-400 { border-top: 4px solid #60a5fa; }
+.metodo-card.border-blue-600 {
+  border-top: 4px solid #2563eb;
+}
+
+.metodo-card.border-blue-500 {
+  border-top: 4px solid #3b82f6;
+}
+
+.metodo-card.border-blue-400 {
+  border-top: 4px solid #60a5fa;
+}
 
 .metodo-number {
   font-size: 3rem;
@@ -75,7 +79,7 @@
   font-style: italic;
 }
 
-/* ---- Desktop ---- */
+/* Desktop */
 @media (min-width: 768px) {
   .metodo-grid {
     grid-template-columns: repeat(3, 1fr);
