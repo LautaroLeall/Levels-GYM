@@ -1,6 +1,7 @@
 .metodo {
   padding: 6rem 0;
   position: relative;
+  background-color: rgba(15, 23, 42, 0.5);
 }
 
 .metodo-container {
