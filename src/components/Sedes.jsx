@@ -1,9 +1,5 @@
 import '../styles/Sedes.css';
 
-/**
- * Sedes — Tarjetas de las 2 sedes con horarios específicos.
- */
-
 const sedes = [
   {
     nombre: 'Sede YB',
