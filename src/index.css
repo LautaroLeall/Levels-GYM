@@ -1,9 +1,5 @@
 @import "tailwindcss";
 
-/* ============================================================
-   ESTILOS GLOBALES — Levels GYM
-   ============================================================ */
-
 body {
   font-family: 'Plus Jakarta Sans', sans-serif;
   background-color: #020617;
@@ -11,7 +7,7 @@ body {
   overflow-x: hidden;
 }
 
-/* ----- Utilidades Custom ----- */
+/* Utilidades Custom */
 .bg-levels-deep {
   background: radial-gradient(circle at top right, #1e40af, #020617 60%);
 }
@@ -28,64 +24,6 @@ body {
   border: 1px solid rgba(255, 255, 255, 0.08);
 }
 
-/* ----- Carrusel Infinito ----- */
-.carousel-track {
-  display: flex;
-  width: max-content;
-  animation: scroll 40s linear infinite;
-}
-
-.carousel-track:hover {
-  animation-play-state: paused;
-}
-
-@keyframes scroll {
-  0% { transform: translateX(0); }
-  100% { transform: translateX(-50%); }
-}
-
-.carousel-container {
-  overflow-x: auto;
-  scrollbar-width: none;
-  -ms-overflow-style: none;
-  cursor: grab;
-}
-.carousel-container:active { cursor: grabbing; }
-.carousel-container::-webkit-scrollbar { display: none; }
-
-/* ----- Service Cards ----- */
-.service-card {
-  transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
-  position: relative;
-  overflow: hidden;
-}
-
-.service-card img {
-  transition: transform 0.7s ease;
-}
-
-.service-card::after {
-  content: '';
-  position: absolute;
-  inset: 0;
-  background: linear-gradient(to top, rgba(2, 6, 23, 0.9), transparent);
-  opacity: 0.8;
-  transition: opacity 0.5s ease;
-}
-
-/* ----- Logo Flotante ----- */
-@keyframes float {
-  0% { transform: translateY(0px); }
-  50% { transform: translateY(-10px); }
-  100% { transform: translateY(0px); }
-}
-.float-logo {
-  animation: float 4s ease-in-out infinite;
-}
-
-/* ============================================================
-   HOVER — Solo desktop (ratón, no touch)
-   ============================================================ */
 @media (hover: hover) and (pointer: fine) {
   .service-card:hover {
     transform: translateY(-10px) scale(1.02);
