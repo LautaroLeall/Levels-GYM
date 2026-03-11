@@ -1,7 +1,3 @@
-/* ============================================================
-   Sedes.css — Estilos del componente Sedes
-   ============================================================ */
-
 .sedes {
   padding: 6rem 0;
   background-color: rgba(15, 23, 42, 0.5);
@@ -60,8 +56,13 @@
   mix-blend-mode: multiply;
 }
 
-.sede-img-overlay.yb { background-color: rgba(30, 58, 138, 0.4); }
-.sede-img-overlay.centro { background-color: rgba(2, 6, 23, 0.4); }
+.sede-img-overlay.yb {
+  background-color: rgba(30, 58, 138, 0.4);
+}
+
+.sede-img-overlay.centro {
+  background-color: rgba(2, 6, 23, 0.4);
+}
 
 .sede-img-name {
   position: absolute;
@@ -121,15 +122,24 @@
   margin-bottom: 0.5rem;
 }
 
-.sede-horario-row.normal { color: #ffffff; }
-.sede-horario-row.normal span:first-child { opacity: 0.6; }
+.sede-horario-row.normal {
+  color: #ffffff;
+}
+
+.sede-horario-row.normal span:first-child {
+  opacity: 0.6;
+}
+
 .sede-horario-row.sabado {
   color: #60a5fa;
   font-weight: 700;
   text-decoration: underline;
   text-decoration-color: rgba(59, 130, 246, 0.3);
 }
-.sede-horario-row.sabado span:first-child { opacity: 0.8; }
+
+.sede-horario-row.sabado span:first-child {
+  opacity: 0.8;
+}
 
 /* GPS Botón */
 .sede-gps-btn {
@@ -148,14 +158,14 @@
   font-size: 0.75rem;
 }
 
-/* ---- Desktop ---- */
+/* Desktop */
 @media (min-width: 768px) {
   .sedes-grid {
     grid-template-columns: 1fr 1fr;
   }
 }
 
-/* ---- Hover solo desktop ---- */
+/* Hover solo desktop */
 @media (hover: hover) and (pointer: fine) {
   .sede-card:hover .sede-img-wrapper img {
     transform: scale(1.1);
