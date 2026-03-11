@@ -1,0 +1,91 @@
+/* ============================================================
+   Horarios.css — Estilos del componente Horarios
+   ============================================================ */
+
+.horarios {
+  padding: 4rem 0;
+  background-color: #2563eb;
+}
+
+.horarios-container {
+  max-width: 80rem;
+  margin: 0 auto;
+  padding: 0 1.5rem;
+  display: grid;
+  align-items: center;
+  gap: 3rem;
+}
+
+.horarios-title {
+  font-size: 1.875rem;
+  font-weight: 900;
+  text-transform: uppercase;
+  font-style: italic;
+  letter-spacing: -0.025em;
+  color: #ffffff;
+  margin-bottom: 0.5rem;
+  text-decoration: underline;
+  text-underline-offset: 8px;
+  text-decoration-color: rgba(255, 255, 255, 0.3);
+}
+
+.horarios-desc {
+  color: #bfdbfe;
+  font-style: italic;
+  margin-bottom: 1.5rem;
+}
+
+.horarios-label {
+  font-size: 0.75rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.15em;
+  color: #ffffff;
+  opacity: 0.7;
+  margin-bottom: 0.25rem;
+}
+
+.horarios-time {
+  font-size: 2.25rem;
+  font-weight: 900;
+  letter-spacing: -0.025em;
+  color: #ffffff;
+}
+
+/* Sábados grid */
+.horarios-sabados {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1rem;
+}
+
+.horarios-sabado-card {
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(12px);
+  padding: 1.5rem;
+  border-radius: 1.5rem;
+  border: none;
+}
+
+.horarios-sabado-label {
+  font-size: 0.75rem;
+  font-weight: 900;
+  text-transform: uppercase;
+  letter-spacing: 0.15em;
+  color: rgba(255, 255, 255, 0.7);
+  margin-bottom: 1rem;
+}
+
+.horarios-sabado-time {
+  font-size: 1.5rem;
+  font-weight: 900;
+  color: #ffffff;
+  font-style: italic;
+}
+
+/* ---- Desktop ---- */
+@media (min-width: 768px) {
+  .horarios-container {
+    grid-template-columns: 1fr 1fr;
+  }
+}
