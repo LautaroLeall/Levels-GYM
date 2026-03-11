@@ -1,7 +1,3 @@
-/* ============================================================
-   Planes.css — Estilos del componente Planes
-   ============================================================ */
-
 .planes {
   padding: 6rem 0;
   background-color: #020617;
@@ -113,8 +109,13 @@
   color: #ffffff;
 }
 
-.plan-price-big.size-xl { font-size: 3rem; }
-.plan-price-big.size-2xl { font-size: 2.25rem; }
+.plan-price-big.size-xl {
+  font-size: 3rem;
+}
+
+.plan-price-big.size-2xl {
+  font-size: 2.25rem;
+}
 
 .plan-price-small {
   font-size: 1.5rem;
@@ -172,8 +173,13 @@
   margin-right: 0.5rem;
 }
 
-.plan-benefits.light li { color: #e2e8f0; }
-.plan-benefits.muted li { color: #94a3b8; }
+.plan-benefits.light li {
+  color: #e2e8f0;
+}
+
+.plan-benefits.muted li {
+  color: #94a3b8;
+}
 
 /* CTA Botones */
 .plan-cta {
@@ -200,7 +206,7 @@
   box-shadow: 0 10px 25px rgba(37, 99, 235, 0.3);
 }
 
-/* ---- Desktop ---- */
+/* Desktop */
 @media (min-width: 768px) {
   .planes-grid {
     grid-template-columns: repeat(3, 1fr);
@@ -215,7 +221,7 @@
   }
 }
 
-/* ---- Hover solo desktop ---- */
+/* Hover solo desktop */
 @media (hover: hover) and (pointer: fine) {
   .plan-card.normal:hover {
     border-color: rgba(59, 130, 246, 0.5);
