@@ -1,3 +1,48 @@
+/* === Keyframes Galería === */
+@keyframes galeriaSlideLeft {
+  from {
+    opacity: 0;
+    transform: translateX(-80px) scale(0.97);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0) scale(1);
+  }
+}
+
+@keyframes galeriaSlideRight {
+  from {
+    opacity: 0;
+    transform: translateX(80px) scale(0.97);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0) scale(1);
+  }
+}
+
+@keyframes galeriaSlideUp {
+  from {
+    opacity: 0;
+    transform: translateY(60px) scale(0.97);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+@keyframes galeriaFadeLeft {
+  from {
+    opacity: 0;
+    transform: translateX(-50px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
 .galeria {
   padding: 6rem 0;
   background-color: rgba(15, 23, 42, 0.3);
@@ -26,6 +71,39 @@
 
 .galeria-header {
   margin-bottom: 3rem;
+  opacity: 0;
+  transform: translateX(-50px);
+  transition: none;
+}
+
+/* Estado inicial: items ocultos */
+.galeria-item {
+  opacity: 0;
+}
+
+/* Cuando la sección entra al viewport */
+.galeria-animado .galeria-header {
+  animation: galeriaFadeLeft 0.7s cubic-bezier(0.25, 0.46, 0.45, 0.94) 0.1s both;
+}
+
+/* 1: imagen grande — entra desde la izquierda */
+.galeria-animado .galeria-item-1 {
+  animation: galeriaSlideLeft 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94) 0.3s both;
+}
+
+/* 2: imagen pequeña arriba-derecha — entra desde la derecha */
+.galeria-animado .galeria-item-2 {
+  animation: galeriaSlideRight 0.75s cubic-bezier(0.25, 0.46, 0.45, 0.94) 0.65s both;
+}
+
+/* 3: imagen pequeña abajo-derecha — entra desde la derecha con más delay */
+.galeria-animado .galeria-item-3 {
+  animation: galeriaSlideRight 0.75s cubic-bezier(0.25, 0.46, 0.45, 0.94) 1.0s both;
+}
+
+/* 4: imagen wide final — sube desde abajo */
+.galeria-animado .galeria-item-4 {
+  animation: galeriaSlideUp 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94) 1.35s both;
 }
 
 /* Grid */
