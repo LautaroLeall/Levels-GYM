@@ -1,35 +1,42 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
+import { useEffect } from 'react';
+import AOS from 'aos';
+import 'aos/dist/aos.css';
+import '@fortawesome/fontawesome-free/css/all.min.css';
 
-function App() {
-  const [count, setCount] = useState(0)
+import Navbar from './components/Navbar';
+import Hero from './components/Hero';
+import Metodo from './components/Metodo';
+import Planes from './components/Planes';
+import Horarios from './components/Horarios';
+import Servicios from './components/Servicios';
+import Inscripcion from './components/Inscripcion';
+import Galeria from './components/Galeria';
+import Sedes from './components/Sedes';
+import Footer from './components/Footer';
+import WhatsAppButton from './components/WhatsAppButton';
+
+export default function App() {
+  useEffect(() => {
+    AOS.init({
+      duration: 800,
+      once: true,
+      offset: 100,
+    });
+  }, []);
 
   return (
-    <>
-      <div>
-        <a href="https://vite.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.jsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
-    </>
-  )
+    <div className="text-slate-100 overflow-x-hidden">
+      <Navbar />
+      <Hero />
+      <Metodo />
+      <Servicios />
+      <Horarios />
+      <Planes />
+      <Sedes />
+      <Galeria />
+      <Inscripcion />
+      <Footer />
+      <WhatsAppButton />
+    </div>
+  );
 }
-
-export default App
