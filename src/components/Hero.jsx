@@ -5,7 +5,7 @@ export default function Hero() {
     <section id="inicio" className="hero bg-levels-deep">
       <div className="hero-grid">
         {/* Texto */}
-        <div data-aos="fade-right" data-aos-duration="1000">
+        <div>
           <span className="hero-badge">
             Professional Training &amp; Recovery
           </span>
@@ -34,7 +34,7 @@ export default function Hero() {
         </div>
 
         {/* Logo Animado */}
-        <div className="hero-logo-container" data-aos="zoom-in" data-aos-duration="1200">
+        <div className="hero-logo-container">
           <div className="hero-logo-box float-logo">
             <div className="hero-logo-overlay"></div>
             <img src="/logo-levels_hero.png" alt="Levels Logo" />
