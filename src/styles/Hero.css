@@ -112,6 +112,7 @@
   position: relative;
   display: flex;
   justify-content: center;
+  align-items: center;
 }
 
 .float-logo {
@@ -120,9 +121,9 @@
 
 .hero-logo-box {
   position: relative;
-  width: 18rem;
-  height: 18rem;
-  border-radius: 1.5rem;
+  width: 15rem;
+  height: 15rem;
+  border-radius: 50%;
   box-shadow: 0 0 100px rgba(37, 99, 235, 0.4);
   display: flex;
   align-items: center;
@@ -136,6 +137,7 @@
   height: 75%;
   object-fit: contain;
   position: relative;
+  /* left: -8px; */
   z-index: 2;
 }
 
@@ -153,7 +155,7 @@
   width: 10rem;
   height: 10rem;
   background-color: rgba(59, 130, 246, 0.2);
-  border-radius: 9999px;
+  border-radius: 50%;
   filter: blur(48px);
 }
 

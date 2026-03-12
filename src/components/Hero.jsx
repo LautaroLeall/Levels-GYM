@@ -37,7 +37,7 @@ export default function Hero() {
         <div className="hero-logo-container">
           <div className="hero-logo-box float-logo">
             <div className="hero-logo-overlay"></div>
-            <img src="/logo-levels.png" alt="Levels Logo" />
+            <img src="/logo-levels_hero.png" alt="Levels Logo" />
           </div>
           <div className="hero-logo-blur"></div>
         </div>
