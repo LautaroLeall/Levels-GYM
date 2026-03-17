@@ -1,121 +1,112 @@
-import { useEffect, useRef } from 'react';
+import { useRef, useState } from 'react';
 import '../styles/Servicios.css';
 
-const servicios = [
+const serviciosBase = [
   {
     img: 'https://images.unsplash.com/photo-1534438327276-14e5300c3a48?auto=format&fit=crop&q=80&w=800',
     alt: 'Entrenamiento',
     icono: 'fa-dumbbell',
     iconoClass: 'bg-1',
     titulo: 'Entrenamiento Adaptativo',
-    descripcion:
-      'No creemos en rutinas genéricas. Ajustamos cada sesión según tu fatiga y progreso real medido por tecnología.',
-  },
-  {
-    img: 'https://images.unsplash.com/photo-1515377905703-c4788e51af15?auto=format&fit=crop&q=80&w=800',
-    alt: 'Recovery',
-    icono: 'fa-spa',
-    iconoClass: 'bg-2',
-    titulo: 'Recovery Deportiva',
-    descripcion:
-      'Saunas, tinas de hielo y aparatología de última generación para volver a la acción en tiempo récord.',
+    descripcion: 'No creemos en rutinas genéricas. Ajustamos cada sesión según tu fatiga y progreso real medido por tecnología.',
   },
   {
     img: 'https://images.unsplash.com/photo-1490645935967-10de6ba17061?auto=format&fit=crop&q=80&w=800',
     alt: 'Nutrición',
     icono: 'fa-utensils',
-    iconoClass: 'bg-3',
+    iconoClass: 'bg-1',
     titulo: 'Nutrición Evolutiva',
-    descripcion:
-      'Planificación enfocada en el rendimiento y la composición corporal sostenible. Hábitos, no dietas.',
+    descripcion: 'Planificación enfocada en el rendimiento y la composición corporal sostenible. Hábitos, no dietas.',
   },
   {
     img: 'https://images.unsplash.com/photo-1576091160550-2173dba999ef?auto=format&fit=crop&q=80&w=800',
     alt: 'Kinesiología',
     icono: 'fa-user-md',
-    iconoClass: 'bg-4',
+    iconoClass: 'bg-1',
     titulo: 'Rehabilitación',
-    descripcion:
-      'Kinesiología aplicada al deporte. Reeducamos el movimiento para evitar lesiones y mejorar tu técnica.',
+    descripcion: 'Kinesiología aplicada al deporte. Reeducamos el movimiento para evitar lesiones y mejorar tu técnica.',
+  },
+  {
+    img: 'https://images.unsplash.com/photo-1517836357463-d25dfeac3438?auto=format&fit=crop&q=80&w=800',
+    alt: 'Adulto Mayor',
+    icono: 'fa-heartbeat',
+    iconoClass: 'bg-1',
+    titulo: 'Personalizado +50',
+    descripcion: 'Un profesional 100% dedicado a acompañarte, cuidarte y motivarte. Entrenamiento adaptado para mejorar tu calidad de vida, movilidad y longevidad.',
+  },
+  {
+    img: 'https://www.green-fit.es/wp-content/uploads/2023/11/rutina-gym-futbolista.jpg',
+    alt: 'Fútbol',
+    icono: 'fa-futbol',
+    iconoClass: 'bg-1',
+    titulo: 'Preparación Futbolística',
+    descripcion: 'Clases personalizadas exclusivas para jugadores de fútbol. Optimizamos tu fuerza, agilidad, velocidad y resistencia para rendir al máximo en la cancha.',
   },
 ];
 
+const servicios = [...serviciosBase, ...serviciosBase, ...serviciosBase, ...serviciosBase, ...serviciosBase];
+
 export default function Servicios() {
-  const trackRef = useRef(null);
   const wrapperRef = useRef(null);
+  const trackRef = useRef(null);
+  const [isPaused, setIsPaused] = useState(false);
 
-  // Duplicar tarjetas para scroll infinito fluido
-  useEffect(() => {
-    const track = trackRef.current;
-    if (!track) return;
-    const cards = Array.from(track.children);
-    cards.forEach((card) => {
-      const clone = card.cloneNode(true);
-      track.appendChild(clone);
-    });
-  }, []);
+  const scrollPrev = () => {
+    if (wrapperRef.current) {
+      wrapperRef.current.scrollBy({ left: -200, behavior: 'smooth' });
+    }
+  };
 
-  // Drag-to-scroll
-  useEffect(() => {
-    const wrapper = wrapperRef.current;
-    const track = trackRef.current;
-    if (!wrapper || !track) return;
-
-    let isDown = false;
-    let startX;
-    let scrollLeft;
-
-    const onMouseDown = (e) => {
-      isDown = true;
-      startX = e.pageX - wrapper.offsetLeft;
-      scrollLeft = wrapper.scrollLeft;
-      track.style.animationPlayState = 'paused';
-    };
-    const onMouseLeave = () => { isDown = false; track.style.animationPlayState = 'running'; };
-    const onMouseUp = () => { isDown = false; track.style.animationPlayState = 'running'; };
-    const onMouseMove = (e) => {
-      if (!isDown) return;
-      e.preventDefault();
-      const x = e.pageX - wrapper.offsetLeft;
-      wrapper.scrollLeft = scrollLeft - (x - startX) * 2;
-    };
-
-    wrapper.addEventListener('mousedown', onMouseDown);
-    wrapper.addEventListener('mouseleave', onMouseLeave);
-    wrapper.addEventListener('mouseup', onMouseUp);
-    wrapper.addEventListener('mousemove', onMouseMove);
-
-    return () => {
-      wrapper.removeEventListener('mousedown', onMouseDown);
-      wrapper.removeEventListener('mouseleave', onMouseLeave);
-      wrapper.removeEventListener('mouseup', onMouseUp);
-      wrapper.removeEventListener('mousemove', onMouseMove);
-    };
-  }, []);
+  const scrollNext = () => {
+    if (wrapperRef.current) {
+      wrapperRef.current.scrollBy({ left: 200, behavior: 'smooth' });
+    }
+  };
 
   return (
-    <section id="servicios" className="servicios">
+    <section id="servicios" className="servicios-section relative">
       <div className="servicios-header">
-        <div data-aos="fade-right">
-          <h2 className="servicios-title">
-            Nuestros <span className="blue-gradient-text">Ejes</span>
-          </h2>
-          <p className="servicios-subtitle">
-            Desplazamiento automático para explorar nuestra excelencia.
-          </p>
+        <div data-aos="fade-right" className="flex flex-col md:flex-row md:items-end justify-between gap-6">
+          <div>
+            <h2 className="servicios-title mb-2">
+              Nuestros <span className="blue-gradient-text">Ejes</span>
+            </h2>
+            <p className="servicios-subtitle">
+              Desplazamiento automático para explorar nuestra excelencia.
+            </p>
+          </div>
+
+          <div className="flex gap-4">
+            <button onClick={scrollPrev} className="carousel-arrow flex items-center justify-center" aria-label="Ver anterior">
+              <i className="fas fa-chevron-left"></i>
+            </button>
+            <button onClick={scrollNext} className="carousel-arrow flex items-center justify-center" aria-label="Ver siguiente">
+              <i className="fas fa-chevron-right"></i>
+            </button>
+          </div>
         </div>
       </div>
 
-      <div className="carousel-container" ref={wrapperRef}>
-        <div className="carousel-track" ref={trackRef}>
-          {servicios.map((s) => (
-            <div key={s.titulo} className="service-card service-card-inner glass">
-              <img src={s.img} className="service-card-img" alt={s.alt} />
-              <div className="service-card-content">
-                <div className={`service-card-icon ${s.iconoClass}`}>
-                  <i className={`fas ${s.icono}`}></i>
+      <div
+        className="carousel-container relative mt-8"
+        ref={wrapperRef}
+        onMouseEnter={() => setIsPaused(true)}
+        onMouseLeave={() => setIsPaused(false)}
+      >
+        <div className={`flex carousel-track${isPaused ? ' paused' : ''}`} ref={trackRef}>
+          {servicios.map((s, idx) => (
+            <div key={`${s.titulo}-${idx}`} className="service-card relative">
+              <img src={s.img} className="service-card-img absolute" alt={s.alt} draggable="false" />
+              <div className="service-card-overlay absolute" />
+              <div className="service-card-hint absolute flex items-center justify-center">
+                <i className="fas fa-plus" />
+              </div>
+              <div className="service-card-content absolute flex flex-col justify-end p-8">
+                <div className={`flex items-center justify-center mb-5 service-card-icon ${s.iconoClass}`}>
+                  <i className={`fas ${s.icono}`} />
                 </div>
-                <h4 className="service-card-title">{s.titulo}</h4>
+                <h4 className="service-card-title mb-0">{s.titulo}</h4>
+                <span className="service-card-line block mb-0" />
                 <p className="service-card-desc">{s.descripcion}</p>
               </div>
             </div>
