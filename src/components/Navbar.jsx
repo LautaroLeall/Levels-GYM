@@ -29,17 +29,17 @@ export default function Navbar() {
 
   return (
     <>
-      <nav className="navbar">
-        <div className="navbar-container">
+      <nav className="navbar fixed">
+        <div className="navbar-container flex justify-between items-center">
           {/* Logo */}
-          <a href="#inicio" className="navbar-logo">
+          <a href="#inicio" className="navbar-logo flex items-center">
             <span>Le </span>
-            <img src="/logo-levels.png" alt="Levels Logo" />
+            <img src="/logo-levels.png" alt="Levels Logo" className='relative' />
             <span>els</span>
           </a>
 
           {/* Links Desktop */}
-          <div className="navbar-links">
+          <div className="navbar-links hidden items-center gap-10">
             {navLinks.map((link) => (
               <a
                 key={link.href}
@@ -60,7 +60,7 @@ export default function Navbar() {
           </div>
 
           {/* Hamburguesa */}
-          <button onClick={openMenu} className="navbar-hamburger" aria-label="Abrir menú">
+          <button onClick={openMenu} className="navbar-hamburger block" aria-label="Abrir menú">
             <i className="fas fa-bars"></i>
           </button>
         </div>
@@ -68,8 +68,8 @@ export default function Navbar() {
 
       {/* Menú Móvil */}
       {menuOpen && (
-        <div className={`mobile-menu ${closing ? 'closing' : ''}`}>
-          <button onClick={closeMenu} className="close-btn" aria-label="Cerrar menú">
+        <div className={`mobile-menu fixed flex flex-col justify-center items-center gap-10 ${closing ? 'closing' : ''}`}>
+          <button onClick={closeMenu} className="close-btn absolute" aria-label="Cerrar menú">
             &times;
           </button>
           {navLinks.map((link) => (
