@@ -48,14 +48,14 @@ export default function Galeria() {
   return (
     <section id="galeria" className="galeria" ref={sectionRef}>
       <div className="galeria-container">
-        <div className="galeria-header">
+        <div className="galeria-header mb-15">
           <h2 className="galeria-header-title">
             Nuestras <span className="blue-gradient-text">Instalaciones</span>
           </h2>
-          <p className="galeria-header-desc">Equipamiento profesional de vanguardia.</p>
+          <p className="galeria-header-desc mt-2">Equipamiento profesional de vanguardia.</p>
         </div>
 
-        <div className="galeria-grid">
+        <div className="galeria-grid grid gap-8">
           {imagenes.map((img, i) => (
             <div
               key={img.alt}
