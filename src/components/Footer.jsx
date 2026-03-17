@@ -22,19 +22,19 @@ const developers = [
 
 export default function Footer() {
   return (
-    <footer className="footer">
-      <div className="footer-container">
+    <footer className="footer pt-13 pb-6">
+      <div className="footer-container grid gap-6">
         {/* Logo + Descripción */}
         <div>
-          <div className="footer-logo">
+          <div className="footer-logo flex items-center mb-3">
             <span>Le </span>
             <img src="/logo-levels.png" alt="Levels Logo" />
             <span>els</span>
           </div>
-          <p className="footer-brand-desc">
+          <p className="footer-brand-desc mb-4">
             Entrenamiento de élite en Tucumán. Profesionalismo, ciencia y resultados.
           </p>
-          <div className="footer-social">
+          <div className="footer-social flex gap-3">
             <a href="https://www.instagram.com/levels.ar/" target="_blank" rel="noopener noreferrer" className="glass">
               <i className="fab fa-instagram"></i>
             </a>
@@ -46,8 +46,8 @@ export default function Footer() {
 
         {/* Links rápidos */}
         <div>
-          <h5 className="footer-section-title">Explorar</h5>
-          <ul className="footer-links">
+          <h5 className="footer-section-title mb-4">Explorar</h5>
+          <ul className="footer-links m-0 p-0">
             {footerLinks.map((link) => (
               <li key={link.href}>
                 <a href={link.href}>{link.label}</a>
@@ -58,9 +58,9 @@ export default function Footer() {
 
         {/* Consultas */}
         <div>
-          <h5 className="footer-section-title">Consultas</h5>
-          <p className="footer-consult-text">¿Listo para subir de nivel?</p>
-          <a href="https://wa.me/5493815191501" target="_blank" rel="noopener noreferrer" className="footer-consult-btn">
+          <h5 className="footer-section-title mb-4">Consultas</h5>
+          <p className="footer-consult-text mb-4">¿Listo para subir de nivel?</p>
+          <a href="https://wa.me/5493815191501" target="_blank" rel="noopener noreferrer" className="footer-consult-btn inline-block">
             Contactar Coach
           </a>
         </div>
@@ -68,15 +68,15 @@ export default function Footer() {
 
       {/* Copyright + Devs */}
       <div className="footer-bottom">
-        <div className="footer-copyright-row">
-          <p>&copy; 2024 Levels Argentina. Designed for Performance.</p>
-          <div className="footer-devs">
+        <div className="footer-copyright-row flex flex-col gap-3 mb-5">
+          <p className='mb-5'>&copy; 2024 Levels Argentina. Designed for Performance.</p>
+          <div className="footer-devs flex flex-col">
             <span className="footer-devs-label">Desarrollado por</span>
-            <div className="footer-devs-list">
+            <div className="footer-devs-list flex flex-col gap-3">
               {developers.map((dev) => (
-                <div key={dev.name} className="footer-dev">
+                <div key={dev.name} className="footer-dev flex items-center gap-3 ">
                   <span className="footer-dev-name">{dev.name}</span>
-                  <div className="footer-dev-links">
+                  <div className="footer-dev-links flex gap-2">
                     <a href={dev.github} target="_blank" rel="noopener noreferrer" aria-label={`GitHub de ${dev.name}`}>
                       <i className="fab fa-github"></i>
                     </a>

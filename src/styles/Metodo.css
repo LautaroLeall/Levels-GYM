@@ -1,6 +1,5 @@
 .metodo {
   padding: 6rem 0;
-  position: relative;
   background-color: rgba(15, 23, 42, 0.5);
 }
 
@@ -10,15 +9,9 @@
   padding: 0 1.5rem;
 }
 
-.metodo-header {
-  text-align: center;
-  margin-bottom: 5rem;
-}
-
 .metodo-title {
   font-size: 2.25rem;
   font-weight: 800;
-  margin-bottom: 1rem;
   text-transform: uppercase;
   color: #ffffff;
   letter-spacing: -0.025em;
@@ -33,14 +26,8 @@
 }
 
 /* Grid de tarjetas */
-.metodo-grid {
-  display: grid;
-  gap: 2rem;
-}
-
 /* Tarjeta individual */
 .metodo-card {
-  padding: 2.5rem;
   border-radius: 2.5rem;
 }
 
@@ -60,14 +47,11 @@
   font-size: 3rem;
   font-weight: 900;
   color: rgba(37, 99, 235, 0.2);
-  display: block;
-  margin-bottom: 1.5rem;
 }
 
 .metodo-card-title {
   font-size: 1.5rem;
   font-weight: 700;
-  margin-bottom: 1rem;
   font-style: italic;
   color: #ffffff;
   text-transform: uppercase;
