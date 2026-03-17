@@ -29,10 +29,10 @@ const pasos = [
 
 export default function Metodo() {
   return (
-    <section id="metodo" className="metodo">
+    <section id="metodo" className="metodo relative">
       <div className="metodo-container">
-        <div className="metodo-header" data-aos="fade-up">
-          <h2 className="metodo-title">
+        <div className="metodo-header text-center mb-15" data-aos="fade-up">
+          <h2 className="metodo-title mb-5">
             El Método <span className="blue-gradient-text">Levels</span>
           </h2>
           <p className="metodo-description">
@@ -40,16 +40,16 @@ export default function Metodo() {
           </p>
         </div>
 
-        <div className="metodo-grid">
+        <div className="metodo-grid grid gap-10">
           {pasos.map((paso) => (
             <div
               key={paso.numero}
-              className={`metodo-card glass ${paso.borderClass}`}
+              className={`metodo-card p-8 glass ${paso.borderClass}`}
               data-aos="fade-up"
               data-aos-delay={paso.delay}
             >
-              <span className="metodo-number">{paso.numero}</span>
-              <h3 className="metodo-card-title">{paso.titulo}</h3>
+              <span className="metodo-number block mb-4">{paso.numero}</span>
+              <h3 className="metodo-card-title mb-3">{paso.titulo}</h3>
               <p className="metodo-card-text">{paso.descripcion}</p>
             </div>
           ))}
