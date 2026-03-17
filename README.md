@@ -9,7 +9,7 @@ Una plataforma diseñada para transmitir excelencia, rendimiento y compromiso, f
 
 ## 🌐 Ver Proyecto Online
 
-[![Levels - High Performance Center](https://img.shields.io/badge/Levels-High%20Performance%20Center-2563EB?style=for-the-badge)](https://levels-gym.netlify.app/)
+[![Levels - High Performance Center](https://img.shields.io/badge/Levels-High%20Performance%20Center-2563EB?style=for-the-badge)](https://levels-ar.netlify.app/)
 
 ---
 
