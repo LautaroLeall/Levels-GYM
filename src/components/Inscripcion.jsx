@@ -26,21 +26,21 @@ export default function Inscripcion() {
   };
 
   return (
-    <section id="inscripcion" className="inscripcion">
-      <div className="inscripcion-container">
+    <section id="inscripcion" className="inscripcion relative">
+      <div className="inscripcion-container grid gap-10 items-center">
         {/* Beneficios */}
         <div data-aos="fade-right">
-          <h2 className="inscripcion-title">
+          <h2 className="inscripcion-title mb-5">
             ¿LISTO PARA <span className="blue-gradient-text">ELEVAR</span> TU NIVEL?
           </h2>
-          <p className="inscripcion-desc">
+          <p className="inscripcion-desc mb-8">
             Completá el formulario y uno de nuestros coaches se pondrá en contacto para tu evaluación inicial.
           </p>
 
-          <div className="inscripcion-benefits">
+          <div className="inscripcion-benefits flex flex-col gap-5">
             {beneficios.map((b) => (
-              <div key={b} className="inscripcion-benefit">
-                <div className="inscripcion-benefit-icon">
+              <div key={b} className="inscripcion-benefit flex items-center gap-3">
+                <div className="inscripcion-benefit-icon flex items-center justify-center">
                   <i className="fas fa-check"></i>
                 </div>
                 <span className="inscripcion-benefit-text">{b}</span>
@@ -50,11 +50,11 @@ export default function Inscripcion() {
         </div>
 
         {/* Formulario */}
-        <div className="inscripcion-form-box glass" data-aos="fade-left">
-          <form className="inscripcion-form" onSubmit={handleSubmit}>
-            <div className="inscripcion-form-row">
+        <div className="inscripcion-form-box glass p-10" data-aos="fade-left">
+          <form className="inscripcion-form flex flex-col gap-5" onSubmit={handleSubmit}>
+            <div className="inscripcion-form-row grid gap-5">
               <div className="inscripcion-field">
-                <label>Nombre Completo</label>
+                <label className="mb-3 block">Nombre Completo</label>
                 <input
                   type="text"
                   name="nombre"
@@ -65,7 +65,7 @@ export default function Inscripcion() {
                 />
               </div>
               <div className="inscripcion-field">
-                <label>WhatsApp</label>
+                <label className="mb-3 block">WhatsApp</label>
                 <input
                   type="tel"
                   name="whatsapp"
@@ -78,7 +78,7 @@ export default function Inscripcion() {
             </div>
 
             <div className="inscripcion-field">
-              <label>Membresía Elegida</label>
+              <label className="mb-3 block">Membresía Elegida</label>
               <select
                 name="membresia"
                 value={formData.membresia}
@@ -92,7 +92,7 @@ export default function Inscripcion() {
             </div>
 
             <div className="inscripcion-field">
-              <label>Mensaje Adicional (opcional)</label>
+              <label className="mb-3 block">Mensaje Adicional (opcional)</label>
               <textarea
                 name="objetivo"
                 value={formData.objetivo}
