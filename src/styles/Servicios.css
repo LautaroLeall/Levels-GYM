@@ -1,159 +1,51 @@
-.servicios {
+.servicios-section {
   padding: 6rem 0;
-  background-color: rgba(15, 23, 42, 0.3);
+  background: rgba(15, 23, 42, 0.3);
   overflow: hidden;
 }
 
 .servicios-header {
   max-width: 80rem;
-  margin: 0 auto;
+  margin: 0 auto 0.5rem;
   padding: 0 1.5rem;
-  margin-bottom: 3rem;
 }
 
 .servicios-title {
   font-size: 2.25rem;
   font-weight: 800;
-  text-transform: uppercase;
-  color: #ffffff;
-  letter-spacing: -0.025em;
   font-style: italic;
+  text-transform: uppercase;
+  color: #fff;
+  letter-spacing: -0.03em;
+  line-height: 1;
 }
 
 .servicios-subtitle {
   color: #94a3b8;
-  margin-top: 0.5rem;
   font-style: italic;
+  font-size: 0.95rem;
 }
 
-/* Tarjeta individual del carrusel */
-/* Service Cards */
-.service-card {
-  transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
-  position: relative;
-  overflow: hidden;
-}
-
-.service-card::after {
-  content: '';
-  position: absolute;
-  inset: 0;
-  background: linear-gradient(to top, rgba(2, 6, 23, 0.9), transparent);
-  opacity: 0.8;
-  transition: opacity 0.5s ease;
-}
-
-.service-card-inner {
-  min-width: 300px;
-  height: 450px;
-  margin: 0 0.75rem;
-  border-radius: 2.5rem;
-  position: relative;
-  cursor: pointer;
-}
-
-.service-card img {
-  transition: transform 0.7s ease;
-}
-
-.service-card-img {
-  position: absolute;
-  inset: 0;
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-}
-
-.service-card-content {
-  position: absolute;
-  inset: 0;
-  z-index: 10;
-  padding: 2rem;
-  display: flex;
-  flex-direction: column;
-  justify-content: flex-end;
-}
-
-.service-card-icon {
-  width: 3.5rem;
-  height: 3.5rem;
-  border-radius: 1rem;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  margin-bottom: 1.5rem;
-  color: #ffffff;
-  font-size: 1.5rem;
-}
-
-.service-card-icon.bg-1 {
-  background-color: #2563eb;
-  box-shadow: 0 8px 20px rgba(37, 99, 235, 0.4);
-}
-
-.service-card-icon.bg-2 {
-  background-color: #3b82f6;
-  box-shadow: 0 8px 20px rgba(59, 130, 246, 0.4);
-}
-
-.service-card-icon.bg-3 {
-  background-color: #60a5fa;
-  box-shadow: 0 8px 20px rgba(96, 165, 250, 0.4);
-}
-
-.service-card-icon.bg-4 {
-  background-color: #93c5fd;
-  box-shadow: 0 8px 20px rgba(147, 197, 253, 0.4);
-  color: #1e3a5f;
-}
-
-.service-card-title {
-  font-size: 1.75rem;
-  font-weight: 900;
-  font-style: italic;
-  margin-bottom: 1rem;
-  text-transform: uppercase;
-  letter-spacing: -0.025em;
-  color: #ffffff;
-  line-height: 1.1;
-}
-
-.service-card-desc {
-  color: #e2e8f0;
-  font-size: 0.875rem;
-  line-height: 1.75;
-  opacity: 0;
-  transition: opacity 0.5s;
-  font-style: italic;
-}
-
-/* Carrusel Infinito */
 .carousel-container {
-  overflow-x: auto;
+  overflow: hidden;
   scrollbar-width: none;
-  -ms-overflow-style: none;
-  cursor: grab;
 }
 
 .carousel-container:active {
-  cursor: grabbing;
-}
-
-.carousel-container::-webkit-scrollbar {
-  display: none;
+  cursor: auto;
 }
 
 .carousel-track {
-  display: flex;
   width: max-content;
-  animation: scroll 40s linear infinite;
+  padding: 1.5rem 0 2.5rem;
+  animation: infiniteScroll 50s linear infinite;
 }
 
-.carousel-track:hover {
+.carousel-track.paused {
   animation-play-state: paused;
 }
 
-@keyframes scroll {
+@keyframes infiniteScroll {
   0% {
     transform: translateX(0);
   }
@@ -163,33 +55,190 @@
   }
 }
 
-/* Tablet / Desktop */
+/* Flechas de navegación del carrusel */
+.carousel-arrow {
+  width: 3rem;
+  height: 3rem;
+  border-radius: 50%;
+  background: rgba(30, 41, 59, 0.8);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  color: #fff;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  z-index: 20;
+}
+
+.carousel-arrow:active {
+  transform: scale(0.95);
+}
+
+/* Card Carrousel */
+.service-card {
+  min-width: 300px;
+  height: 450px;
+  margin: 0 0.75rem;
+  border-radius: 2rem;
+  overflow: hidden;
+  flex-shrink: 0;
+  cursor: pointer;
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+  transition: transform 0.45s cubic-bezier(0.4, 0, 0.2, 1), box-shadow 0.45s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
 @media (min-width: 768px) {
-  .service-card-inner {
-    min-width: 450px;
-    height: 550px;
+  .service-card {
+    min-width: 420px;
+    height: 540px;
     margin: 0 1rem;
+    border-radius: 2.5rem;
   }
+}
 
-  .service-card-content {
-    padding: 2.5rem;
-  }
+.service-card-img {
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.75s cubic-bezier(0.4, 0, 0.2, 1);
+}
 
+.service-card-overlay {
+  inset: 0;
+  z-index: 1;
+  background: linear-gradient(to top, rgba(2, 6, 23, 0.97) 0%, rgba(2, 6, 23, 0.55) 50%, rgba(2, 6, 23, 0.1) 100%);
+  transition: background 0.5s ease;
+}
+
+.service-card-hint {
+  top: 1.4rem;
+  right: 1.4rem;
+  z-index: 10;
+  width: 2rem;
+  height: 2rem;
+  border-radius: 50%;
+  background: rgba(59, 130, 246, 0.18);
+  border: 1px solid rgba(59, 130, 246, 0.4);
+  color: #60a5fa;
+  font-size: 0.65rem;
+  transition: opacity 0.3s ease, transform 0.3s ease;
+}
+
+.service-card-content {
+  inset: 0;
+  z-index: 10;
+}
+
+.service-card-icon {
+  width: 3.25rem;
+  height: 3.25rem;
+  border-radius: 1rem;
+  color: #fff;
+  font-size: 1.3rem;
+  transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.service-card-icon.bg-1 {
+  background: #2563eb;
+  box-shadow: 0 8px 20px rgba(37, 99, 235, 0.45);
+}
+
+.service-card-title {
+  font-size: 1.55rem;
+  font-weight: 900;
+  font-style: italic;
+  text-transform: uppercase;
+  color: #fff;
+  letter-spacing: -0.02em;
+  line-height: 1.1;
+  transition: margin-bottom 0.4s ease;
+}
+
+@media (min-width: 768px) {
   .service-card-title {
     font-size: 1.875rem;
   }
 }
 
-/* Hover solo desktop */
+.service-card-line {
+  height: 2px;
+  width: 0;
+  border-radius: 2px;
+  background: linear-gradient(90deg, #3b82f6, #60a5fa);
+  transition: width 0.4s cubic-bezier(0.4, 0, 0.2, 1) 0.05s, margin-bottom 0.4s ease 0.05s;
+}
+
+.service-card-desc {
+  color: #cbd5e1;
+  font-size: 0.875rem;
+  line-height: 1.75;
+  font-style: italic;
+  max-height: 0;
+  overflow: hidden;
+  opacity: 0;
+  transition: max-height 0.5s cubic-bezier(0.4, 0, 0.2, 1), opacity 0.45s ease 0.07s;
+}
+
 @media (hover: hover) and (pointer: fine) {
+  .carousel-arrow:hover {
+    background: #2563eb;
+    border-color: #3b82f6;
+    transform: scale(1.1);
+  }
+
+  .service-card:hover {
+    transform: translateY(-10px) scale(1.025);
+    box-shadow: 0 30px 60px rgba(37, 99, 235, 0.28), 0 8px 24px rgba(0, 0, 0, 0.45);
+  }
+
+  .service-card:hover .service-card-img {
+    transform: scale(1.1);
+  }
+
+  .service-card:hover .service-card-overlay {
+    background: linear-gradient(to top, rgba(2, 6, 23, 0.99) 0%, rgba(2, 6, 23, 0.88) 55%, rgba(10, 20, 60, 0.45) 100%);
+  }
+
+  .service-card:hover .service-card-icon {
+    transform: scale(1.12) rotate(-4deg);
+    background: #93c5fd;
+    box-shadow: 0 8px 20px rgba(147, 197, 253, 0.45);
+    color: #1e3a5f;
+  }
+
+  .service-card:hover .service-card-title {
+    margin-bottom: 0.75rem;
+  }
+
+  .service-card:hover .service-card-line {
+    width: 2.75rem;
+    margin-bottom: 0.75rem;
+  }
+
   .service-card:hover .service-card-desc {
+    max-height: 10rem;
     opacity: 1;
   }
 }
 
-/* Mobile: mostrar descripción siempre */
-@media (hover: none) {
+/* Responsive Mobile: Mostrar toda la información por defecto */
+@media (max-width: 767px) {
+  .service-card-overlay {
+    background: linear-gradient(to top, rgba(2, 6, 23, 0.99) 0%, rgba(2, 6, 23, 0.88) 55%, rgba(10, 20, 60, 0.45) 100%);
+  }
+
+  .service-card-title {
+    margin-bottom: 0.75rem;
+  }
+
+  .service-card-line {
+    width: 2.75rem;
+    margin-bottom: 0.75rem;
+  }
+
   .service-card-desc {
+    max-height: 15rem;
     opacity: 1;
   }
 }
