@@ -3,10 +3,10 @@ import '../styles/Hero.css';
 export default function Hero() {
   return (
     <section id="inicio" className="hero bg-levels-deep flex items-center pt-15">
-      <div className="hero-grid grid gap-8 items-center">
+      <div className="hero-grid grid gap-5 items-center">
         {/* Texto */}
         <div>
-          <span className="hero-badge inline-block mb-5">
+          <span className="hero-badge inline-block mb-8">
             High Performance Center
           </span>
           <h1 className="hero-title mb-3">
@@ -14,8 +14,8 @@ export default function Hero() {
             <br />
             SUPERIOR
           </h1>
-          <p className="hero-subtitle mb-4">
-            &ldquo;Más que un gimnasio, una filosofía de rendimiento integral en el corazón de Tucumán.&rdquo;
+          <p className="hero-subtitle mb-5">
+            &ldquo;No es solo un gimnasio. Es donde llevás tu rendimiento al siguiente nivel.&rdquo;
           </p>
           <div className="hero-cta-group flex flex-wrap gap-7">
             <a href="#planes" className="hero-cta-btn flex items-center gap-2">
@@ -24,9 +24,9 @@ export default function Hero() {
             </a>
             <div className="hero-community flex items-center gap-2 pl-5">
               <div className="hero-avatars flex">
-                <img src="https://i.pravatar.cc/100?u=1" alt="Usuario" />
-                <img src="https://i.pravatar.cc/100?u=2" alt="Usuario" />
-                <img src="https://i.pravatar.cc/100?u=3" alt="Usuario" />
+                <img src="/comunidad/comunidad_1.jpg" alt="Usuario" />
+                <img src="/comunidad/comunidad_2.jpg" alt="Usuario" />
+                <img src="/comunidad/comunidad_3.jpg" alt="Usuario" />
               </div>
               <span className="hero-community-text">Comunidad Levels</span>
             </div>
