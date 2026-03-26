@@ -1,13 +1,14 @@
+import { useState } from 'react';
 import '../styles/Planes.css';
 
 const planes = [
   {
     nombre: 'Mensual',
     subtitulo: 'Ideal para empezar tu camino.',
-    precios: [
-      { monto: '$44.000', metodo: 'Efectivo', sizeClass: 'size-2xl' },
-      { monto: '$46.000', metodo: 'Transferencia', small: true },
-    ],
+    precios: {
+      efectivo: '$44.000',
+      transferencia: '$46.000',
+    },
     notaExtra: null,
     cuotas: null,
     beneficios: [
@@ -15,7 +16,6 @@ const planes = [
       'Evaluación inicial básica',
       'Zona de musculación y funcional',
     ],
-    ctaTexto: 'Seleccionar',
     ctaClass: 'outline',
     popular: false,
     benefitClass: 'muted',
@@ -24,9 +24,10 @@ const planes = [
   {
     nombre: 'Trimestral',
     subtitulo: 'Compromiso real con tus resultados.',
-    precios: [
-      { monto: '$119.000', metodo: 'Efectivo', sizeClass: 'size-xl' },
-    ],
+    precios: {
+      efectivo: '$119.000',
+      transferencia: '$124.000',
+    },
     notaExtra: 'Ahorrá entrenando 3 meses',
     cuotas: null,
     beneficios: [
@@ -35,7 +36,6 @@ const planes = [
       'Invitaciones a eventos exclusivos',
       'Acceso a zona Recovery',
     ],
-    ctaTexto: 'Adquirir Ahora',
     ctaClass: 'filled',
     popular: true,
     benefitClass: 'light',
@@ -44,9 +44,10 @@ const planes = [
   {
     nombre: '6 Meses',
     subtitulo: 'Transformación total garantizada.',
-    precios: [
-      { monto: '$240.000', metodo: 'Total', sizeClass: 'size-2xl' },
-    ],
+    precios: {
+      efectivo: '$229.000',
+      transferencia: '$240.000',
+    },
     notaExtra: null,
     cuotas: '3 Cuotas de $80.000',
     beneficios: [
@@ -55,13 +56,86 @@ const planes = [
       'Remera oficial Levels de regalo',
       'Acceso ilimitado a Recovery',
     ],
-    ctaTexto: 'Seleccionar',
     ctaClass: 'outline',
     popular: false,
     benefitClass: 'muted',
     delay: '200',
   },
 ];
+
+function PlanCard({ plan }) {
+  const [metodo, setMetodo] = useState('efectivo');
+
+  const handleContratar = () => {
+    sessionStorage.setItem('planSeleccionado', JSON.stringify({
+      plan: plan.nombre,
+      metodo: metodo === 'efectivo' ? 'Efectivo' : 'Transferencia',
+      precio: plan.precios[metodo],
+    }));
+    document.getElementById('inscripcion').scrollIntoView({ behavior: 'smooth' });
+  };
+
+  return (
+    <div
+      className={`plan-card glass ${plan.popular ? 'popular' : 'normal'}`}
+      data-aos="fade-up"
+      data-aos-delay={plan.delay}
+    >
+      {plan.popular && <div className="plan-badge">Más Popular</div>}
+
+      <h4 className="plan-name">{plan.nombre}</h4>
+      <p className="plan-desc">{plan.subtitulo}</p>
+
+      {/* Toggle método de pago */}
+      <div className="plan-metodo-toggle">
+        <button
+          className={`metodo-btn${metodo === 'efectivo' ? ' active' : ''}`}
+          onClick={() => setMetodo('efectivo')}
+          type="button"
+        >
+          <i className="fas fa-money-bill-wave"></i>
+          Efectivo
+        </button>
+        <button
+          className={`metodo-btn${metodo === 'transferencia' ? ' active' : ''}`}
+          onClick={() => setMetodo('transferencia')}
+          type="button"
+        >
+          <i className="fas fa-mobile-alt"></i>
+          Transferencia
+        </button>
+      </div>
+
+      {/* Precio */}
+      <div className="plan-precio-wrapper">
+        <div className="plan-precio-row">
+          <span className="plan-price-big size-2xl">{plan.precios[metodo]}</span>
+          <span className="plan-price-label">/ mes</span>
+        </div>
+        {plan.notaExtra && <p className="plan-note">{plan.notaExtra}</p>}
+        {plan.cuotas && metodo === 'transferencia' && (
+          <div className="plan-cuota-badge">{plan.cuotas}</div>
+        )}
+      </div>
+
+      <ul className={`plan-benefits ${plan.benefitClass}`}>
+        {plan.beneficios.map((b, i) => (
+          <li key={i}>
+            <i className="fas fa-check"></i>
+            {b}
+          </li>
+        ))}
+      </ul>
+
+      <button
+        onClick={handleContratar}
+        className={`plan-cta ${plan.ctaClass}`}
+      >
+        Contratar — {metodo === 'efectivo' ? 'Efectivo' : 'Transferencia'}
+      </button>
+    </div>
+  );
+}
 
 export default function Planes() {
   return (
@@ -80,48 +154,7 @@ export default function Planes() {
 
         <div className="planes-grid">
           {planes.map((plan) => (
-            <div
-              key={plan.nombre}
-              className={`plan-card glass ${plan.popular ? 'popular' : 'normal'}`}
-              data-aos="fade-up"
-              data-aos-delay={plan.delay}
-            >
-              {plan.popular && <div className="plan-badge">Más Popular</div>}
-
-              <h4 className="plan-name">{plan.nombre}</h4>
-              <p className="plan-desc">{plan.subtitulo}</p>
-
-              <div style={{ marginBottom: '2rem' }}>
-                {plan.precios.map((p, i) =>
-                  p.small ? (
-                    <div key={i} className="flex items-baseline gap-2" style={{ marginBottom: '0.5rem' }}>
-                      <span className="plan-price-small">{p.monto}</span>
-                      <span className="plan-price-label">{p.metodo}</span>
-                    </div>
-                  ) : (
-                    <div key={i} className="flex items-baseline gap-2" style={{ marginBottom: '0.5rem' }}>
-                      <span className={`plan-price-big ${p.sizeClass}`}>{p.monto}</span>
-                      <span className="plan-price-label">{p.metodo}</span>
-                    </div>
-                  )
-                )}
-                {plan.notaExtra && <p className="plan-note">{plan.notaExtra}</p>}
-                {plan.cuotas && <div className="plan-cuota-badge">{plan.cuotas}</div>}
-              </div>
-
-              <ul className={`plan-benefits ${plan.benefitClass}`}>
-                {plan.beneficios.map((b, i) => (
-                  <li key={i}>
-                    <i className="fas fa-check"></i>
-                    {b}
-                  </li>
-                ))}
-              </ul>
-
-              <a href="#inscripcion" className={`plan-cta ${plan.ctaClass}`}>
-                {plan.ctaTexto}
-              </a>
-            </div>
+            <PlanCard key={plan.nombre} plan={plan} />
           ))}
         </div>
       </div>

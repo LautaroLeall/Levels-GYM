@@ -61,10 +61,20 @@ export default function Navbar() {
 
           {/* Hamburguesa */}
           <button onClick={openMenu} className="navbar-hamburger" aria-label="Abrir menú">
-            <i className="fas fa-bars"></i>
+            <span></span>
+            <span></span>
+            <span></span>
           </button>
         </div>
       </nav>
+
+      {/* Overlay */}
+      {menuOpen && (
+        <div
+          className={`mobile-overlay ${closing ? 'closing' : ''}`}
+          onClick={closeMenu}
+        />
+      )}
 
       {/* Menú Móvil */}
       {menuOpen && (

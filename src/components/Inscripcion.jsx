@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import '../styles/Inscripcion.css';
 
 const beneficios = [
@@ -11,9 +11,25 @@ export default function Inscripcion() {
   const [formData, setFormData] = useState({
     nombre: '',
     whatsapp: '',
-    membresia: 'Plan Semestral (3 cuotas de $80k)',
+    membresia: 'Plan Mensual',
+    metodoPago: 'Efectivo',
     objetivo: '',
   });
+
+  useEffect(() => {
+    const stored = sessionStorage.getItem('planSeleccionado');
+    if (stored) {
+      try {
+        const { plan, metodo, precio } = JSON.parse(stored);
+        setFormData(prev => ({
+          ...prev,
+          membresia: `Plan ${plan} (${precio})`,
+          metodoPago: metodo,
+        }));
+        sessionStorage.removeItem('planSeleccionado');
+      } catch (_) { /* ignorar */ }
+    }
+  }, []);
 
   const handleChange = (e) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
@@ -21,7 +37,7 @@ export default function Inscripcion() {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    const mensaje = `¡Hola! Quiero inscribirme en Levels.%0A%0A*Nombre:* ${formData.nombre}%0A*WhatsApp:* ${formData.whatsapp}%0A*Membresía:* ${formData.membresia}%0A*Objetivo:* ${formData.objetivo || 'No especificado'}`;
+    const mensaje = `¡Hola! Quiero inscribirme en Levels.%0A%0A*Nombre:* ${formData.nombre}%0A*WhatsApp:* ${formData.whatsapp}%0A*Membresía:* ${formData.membresia}%0A*Método de pago:* ${formData.metodoPago}%0A*Objetivo:* ${formData.objetivo || 'No especificado'}`;
     window.open(`https://wa.me/5493815191501?text=${mensaje}`, '_blank');
   };
 
@@ -85,10 +101,32 @@ export default function Inscripcion() {
                 onChange={handleChange}
                 required
               >
-                <option>Plan Mensual ($44k/$46k)</option>
-                <option>Plan Trimestral ($119k)</option>
-                <option>Plan Semestral (3 cuotas de $80k)</option>
+                <option>Plan Mensual ($44.000 efectivo / $46.000 transferencia)</option>
+                <option>Plan Trimestral ($119.000 efectivo / $124.000 transferencia)</option>
+                <option>Plan 6 Meses ($229.000 efectivo / $240.000 transferencia)</option>
               </select>
+            </div>
+
+            <div className="inscripcion-field">
+              <label>Método de Pago</label>
+              <div className="inscripcion-metodo-toggle">
+                <button
+                  type="button"
+                  className={`inscripcion-metodo-btn${formData.metodoPago === 'Efectivo' ? ' active' : ''}`}
+                  onClick={() => setFormData(prev => ({ ...prev, metodoPago: 'Efectivo' }))}
+                >
+                  <i className="fas fa-money-bill-wave"></i>
+                  Efectivo
+                </button>
+                <button
+                  type="button"
+                  className={`inscripcion-metodo-btn${formData.metodoPago === 'Transferencia' ? ' active' : ''}`}
+                  onClick={() => setFormData(prev => ({ ...prev, metodoPago: 'Transferencia' }))}
+                >
+                  <i className="fas fa-mobile-alt"></i>
+                  Transferencia
+                </button>
+              </div>
             </div>
 
             <div className="inscripcion-field">
