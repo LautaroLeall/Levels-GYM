@@ -8,27 +8,25 @@ const beneficios = [
 ];
 
 export default function Inscripcion() {
-  const [formData, setFormData] = useState({
-    nombre: '',
-    whatsapp: '',
-    membresia: 'Plan Mensual',
-    metodoPago: 'Efectivo',
-    objetivo: '',
-  });
-
-  useEffect(() => {
+  const [formData, setFormData] = useState(() => {
     const stored = sessionStorage.getItem('planSeleccionado');
     if (stored) {
       try {
-        const { plan, metodo, precio } = JSON.parse(stored);
-        setFormData(prev => ({
-          ...prev,
-          membresia: `Plan ${plan} (${precio})`,
-          metodoPago: metodo,
-        }));
+        const { plan, metodo } = JSON.parse(stored);
         sessionStorage.removeItem('planSeleccionado');
-      } catch (_) { /* ignorar */ }
+        return { nombre: '', whatsapp: '', membresia: `Plan ${plan}`, metodoPago: metodo, objetivo: '' };
+      } catch { /* ignorar */ }
     }
+    return { nombre: '', whatsapp: '', membresia: 'Plan Mensual', metodoPago: 'Efectivo', objetivo: '' };
+  });
+
+  useEffect(() => {
+    const onPlan = (e) => {
+      const { plan, metodo } = e.detail;
+      setFormData(prev => ({ ...prev, membresia: `Plan ${plan}`, metodoPago: metodo }));
+    };
+    window.addEventListener('planSeleccionado', onPlan);
+    return () => window.removeEventListener('planSeleccionado', onPlan);
   }, []);
 
   const handleChange = (e) => {
@@ -37,8 +35,10 @@ export default function Inscripcion() {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    const mensaje = `¡Hola! Quiero inscribirme en Levels.%0A%0A*Nombre:* ${formData.nombre}%0A*WhatsApp:* ${formData.whatsapp}%0A*Membresía:* ${formData.membresia}%0A*Método de pago:* ${formData.metodoPago}%0A*Objetivo:* ${formData.objetivo || 'No especificado'}`;
-    window.open(`https://wa.me/5493815191501?text=${mensaje}`, '_blank');
+    const esTransferencia = formData.metodoPago === 'Transferencia';
+    const base = `¡Hola! Quiero inscribirme en Levels.%0A%0A*Nombre:* ${formData.nombre}%0A*WhatsApp:* ${formData.whatsapp}%0A*Membresía:* ${formData.membresia}%0A*Método de pago:* ${formData.metodoPago}%0A*Objetivo:* ${formData.objetivo || 'No especificado'}`;
+    const extra = esTransferencia ? `%0A%0AAdjunto comprobante de transferencia ⬆️` : '';
+    window.open(`https://wa.me/5493815191501?text=${base}${extra}`, '_blank');
   };
 
   return (
@@ -101,15 +101,15 @@ export default function Inscripcion() {
                 onChange={handleChange}
                 required
               >
-                <option>Plan Mensual ($44.000 efectivo / $46.000 transferencia)</option>
-                <option>Plan Trimestral ($119.000 efectivo / $124.000 transferencia)</option>
-                <option>Plan 6 Meses ($229.000 efectivo / $240.000 transferencia)</option>
+                <option value="Plan Mensual">Plan Mensual ($44.000 efectivo / $46.000 transferencia)</option>
+                <option value="Plan Trimestral">Plan Trimestral ($119.000 efectivo / $124.000 transferencia)</option>
+                <option value="Plan 6 Meses">Plan 6 Meses ($229.000 efectivo / $240.000 transferencia)</option>
+                <option value="Plan Anual">Plan Anual ($399.000 efectivo / $419.000 transferencia)</option>
               </select>
             </div>
 
             <div className="inscripcion-field">
-<<<<<<< HEAD
-              <label>Método de Pago</label>
+              <label className="mb-3 block">Método de Pago</label>
               <div className="inscripcion-metodo-toggle">
                 <button
                   type="button"
@@ -128,13 +128,29 @@ export default function Inscripcion() {
                   Transferencia
                 </button>
               </div>
+
+              {formData.metodoPago === 'Transferencia' && (
+                <div className="insc-alias-box">
+                  <p className="insc-alias-title">
+                    <i className="fas fa-university"></i> Alias para transferir
+                  </p>
+                  <div className="insc-alias-list">
+                    <div className="insc-alias-row">
+                      <span className="insc-alias-sede">Sede Yerba Buena</span>
+                      <span className="insc-alias-value">Levels.ar</span>
+                    </div>
+                    <div className="insc-alias-row">
+                      <span className="insc-alias-sede">Sede Centro</span>
+                      <span className="insc-alias-value">Levelscentro</span>
+                    </div>
+                  </div>
+                  <p className="insc-alias-nota">Al enviar, te abrimos WhatsApp para adjuntar el comprobante.</p>
+                </div>
+              )}
             </div>
 
             <div className="inscripcion-field">
-              <label>Mensaje Adicional (opcional)</label>
-=======
               <label className="mb-3 block">Mensaje Adicional (opcional)</label>
->>>>>>> c9adf7a161baf62c42fd1032b5f30f05aa314dac
               <textarea
                 name="objetivo"
                 value={formData.objetivo}

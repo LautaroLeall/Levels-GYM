@@ -60,15 +60,10 @@ export default function Navbar() {
           </div>
 
           {/* Hamburguesa */}
-<<<<<<< HEAD
           <button onClick={openMenu} className="navbar-hamburger" aria-label="Abrir menú">
             <span></span>
             <span></span>
             <span></span>
-=======
-          <button onClick={openMenu} className="navbar-hamburger block" aria-label="Abrir menú">
-            <i className="fas fa-bars"></i>
->>>>>>> c9adf7a161baf62c42fd1032b5f30f05aa314dac
           </button>
         </div>
       </nav>

@@ -135,6 +135,65 @@
   color: #cbd5e1;
 }
 
+/* Alias transferencia */
+.insc-alias-box {
+  margin-top: 1rem;
+  background: rgba(37, 99, 235, 0.08);
+  border: 1px solid rgba(37, 99, 235, 0.25);
+  border-radius: 1rem;
+  padding: 1rem 1.25rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.insc-alias-title {
+  font-size: 0.78rem;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: #93c5fd;
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+}
+
+.insc-alias-list {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.insc-alias-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: rgba(255, 255, 255, 0.04);
+  border-radius: 0.6rem;
+  padding: 0.55rem 0.9rem;
+}
+
+.insc-alias-sede {
+  color: #64748b;
+  font-size: 0.75rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+}
+
+.insc-alias-value {
+  color: #ffffff;
+  font-size: 0.95rem;
+  font-weight: 900;
+  letter-spacing: 0.04em;
+}
+
+.insc-alias-nota {
+  color: #475569;
+  font-size: 0.75rem;
+  font-style: italic;
+}
+
 .inscripcion-submit {
   width: 100%;
   padding: 1.25rem;

@@ -13,7 +13,7 @@ const sedes = [
   },
   {
     nombre: 'Sede Centro',
-    img: 'https://images.unsplash.com/photo-1540497077202-7c8a3999166f?auto=format&fit=crop&q=80&w=800',
+    img: './levels-centro.jpg',
     alt: 'SMT',
     direccion: 'Jujuy 254 — SMT',
     sabados: '14:00 — 18:00',

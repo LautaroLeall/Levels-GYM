@@ -3,7 +3,7 @@ import '../styles/Servicios.css';
 
 const serviciosBase = [
   {
-    img: 'https://images.unsplash.com/photo-1534438327276-14e5300c3a48?auto=format&fit=crop&q=80&w=800',
+    img: './pesas.jpeg',
     alt: 'Entrenamiento',
     icono: 'fa-dumbbell',
     iconoClass: 'bg-1',
@@ -11,7 +11,7 @@ const serviciosBase = [
     descripcion: 'No creemos en rutinas genéricas. Ajustamos cada sesión según tu fatiga y progreso real medido por tecnología.',
   },
   {
-    img: 'https://images.unsplash.com/photo-1490645935967-10de6ba17061?auto=format&fit=crop&q=80&w=800',
+    img: './julian.jpeg',
     alt: 'Nutrición',
     icono: 'fa-utensils',
     iconoClass: 'bg-1',
@@ -19,7 +19,7 @@ const serviciosBase = [
     descripcion: 'Planificación enfocada en el rendimiento y la composición corporal sostenible. Hábitos, no dietas.',
   },
   {
-    img: 'https://images.unsplash.com/photo-1576091160550-2173dba999ef?auto=format&fit=crop&q=80&w=800',
+    img: './recovery.jpg',
     alt: 'Kinesiología',
     icono: 'fa-user-md',
     iconoClass: 'bg-1',
@@ -27,15 +27,16 @@ const serviciosBase = [
     descripcion: 'Kinesiología aplicada al deporte. Reeducamos el movimiento para evitar lesiones y mejorar tu técnica.',
   },
   {
-    img: 'https://images.unsplash.com/photo-1517836357463-d25dfeac3438?auto=format&fit=crop&q=80&w=800',
+    img: './ñora.jpeg',
     alt: 'Adulto Mayor',
+    objectPosition: 'center 20%',
     icono: 'fa-heartbeat',
     iconoClass: 'bg-1',
     titulo: 'Personalizado +50',
     descripcion: 'Un profesional 100% dedicado a acompañarte, cuidarte y motivarte. Entrenamiento adaptado para mejorar tu calidad de vida, movilidad y longevidad.',
   },
   {
-    img: 'https://www.green-fit.es/wp-content/uploads/2023/11/rutina-gym-futbolista.jpg',
+    img: './futbol.jpeg',
     alt: 'Fútbol',
     icono: 'fa-futbol',
     iconoClass: 'bg-1',
@@ -96,7 +97,7 @@ export default function Servicios() {
         <div className={`flex carousel-track${isPaused ? ' paused' : ''}`} ref={trackRef}>
           {servicios.map((s, idx) => (
             <div key={`${s.titulo}-${idx}`} className="service-card relative">
-              <img src={s.img} className="service-card-img absolute" alt={s.alt} draggable="false" />
+              <img src={s.img} className="service-card-img absolute" alt={s.alt} draggable="false" style={s.objectPosition ? { objectPosition: s.objectPosition } : undefined} />
               <div className="service-card-overlay absolute" />
               <div className="service-card-hint absolute flex items-center justify-center">
                 <i className="fas fa-plus" />

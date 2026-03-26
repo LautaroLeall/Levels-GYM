@@ -5,10 +5,10 @@ const planes = [
   {
     nombre: 'Mensual',
     subtitulo: 'Ideal para empezar tu camino.',
-    precios: {
-      efectivo: '$44.000',
-      transferencia: '$46.000',
-    },
+    precios: [
+      { monto: '$44.000', metodo: 'Efectivo', sizeClass: 'size-2xl' },
+      { monto: '$46.000', metodo: 'Transferencia', small: true },
+    ],
     notaExtra: null,
     cuotas: null,
     beneficios: [
@@ -16,91 +16,103 @@ const planes = [
       'Evaluación inicial básica',
       'Zona de musculación y funcional',
     ],
+    ctaTexto: 'Seleccionar Plan',
     ctaClass: 'outline',
     popular: false,
     benefitClass: 'muted',
-    delay: '0',
   },
-
   {
     nombre: 'Trimestral',
     subtitulo: 'Compromiso real con tus resultados.',
-    precios: {
-      efectivo: '$119.000',
-      transferencia: '$124.000',
-    },
+    precios: [
+      { monto: '$119.000', metodo: 'Efectivo', sizeClass: 'size-xl' },
+      { monto: '$124.000', metodo: 'Transferencia', small: true },
+    ],
     notaExtra: 'Ahorrá entrenando 3 meses',
     cuotas: null,
     beneficios: [
-      'Prioridad en evaluaciones',
-      'Seguimiento de progreso mensual',
-      'Invitaciones a eventos exclusivos',
-      'Acceso a zona Recovery',
+      'Acceso libre sedes YB y Centro',
+      'Evaluación inicial básica',
+      'Zona de musculación y funcional',
     ],
+    ctaTexto: 'Adquirir Ahora',
     ctaClass: 'filled',
     popular: true,
     benefitClass: 'light',
-    delay: '100',
   },
-
   {
     nombre: '6 Meses',
     subtitulo: 'Transformación total garantizada.',
-    precios: {
-      efectivo: '$229.000',
-      transferencia: '$240.000',
-    },
+    precios: [
+      { monto: '$229.000', metodo: 'Efectivo', sizeClass: 'size-2xl' },
+      { monto: '$240.000', metodo: 'Transferencia', small: true },
+    ],
     notaExtra: null,
     cuotas: '3 Cuotas de $80.000',
     beneficios: [
-      'Congelamiento de precio x 6 meses',
-      'Plan nutricional premium incluido',
-      'Remera oficial Levels de regalo',
-      'Acceso ilimitado a Recovery',
+      'Acceso libre sedes YB y Centro',
+      'Evaluación inicial básica',
+      'Zona de musculación y funcional',
     ],
+    ctaTexto: 'Seleccionar Plan',
     ctaClass: 'outline',
     popular: false,
     benefitClass: 'muted',
-    delay: '200',
+  },
+  {
+    nombre: 'Anual',
+    subtitulo: 'El compromiso máximo, el mejor precio.',
+    precios: [
+      { monto: '$399.000', metodo: 'Efectivo', sizeClass: 'size-xl' },
+      { monto: '$419.000', metodo: 'Transferencia', small: true },
+    ],
+    notaExtra: 'Ahorrá más de $129.000 vs mensual',
+    cuotas: '6 Cuotas de $70.000',
+    beneficios: [
+      'Acceso libre sedes YB y Centro',
+      'Evaluación inicial básica',
+      'Zona de musculación y funcional',
+    ],
+    ctaTexto: 'Adquirir Ahora',
+    ctaClass: 'filled',
+    popular: false,
+    benefitClass: 'light',
   },
 ];
 
 function PlanCard({ plan }) {
-  const [metodo, setMetodo] = useState('efectivo');
+  const [metodo, setMetodo] = useState(0); // 0 = efectivo, 1 = transferencia
+  const precio = plan.precios[metodo];
 
-  const handleContratar = () => {
+  const handleSeleccionar = () => {
     sessionStorage.setItem('planSeleccionado', JSON.stringify({
       plan: plan.nombre,
-      metodo: metodo === 'efectivo' ? 'Efectivo' : 'Transferencia',
-      precio: plan.precios[metodo],
+      metodo: precio.metodo,
+      precio: precio.monto,
+    }));
+    window.dispatchEvent(new CustomEvent('planSeleccionado', {
+      detail: { plan: plan.nombre, metodo: precio.metodo },
     }));
     document.getElementById('inscripcion').scrollIntoView({ behavior: 'smooth' });
   };
 
   return (
-    <div
-      className={`plan-card glass ${plan.popular ? 'popular' : 'normal'}`}
-      data-aos="fade-up"
-      data-aos-delay={plan.delay}
-    >
-      {plan.popular && <div className="plan-badge">Más Popular</div>}
-
+    <div className={`plan-card glass ${plan.popular ? 'popular' : 'normal'}`}>
       <h4 className="plan-name">{plan.nombre}</h4>
       <p className="plan-desc">{plan.subtitulo}</p>
 
-      {/* Toggle método de pago */}
       <div className="plan-metodo-toggle">
         <button
-          className={`metodo-btn${metodo === 'efectivo' ? ' active' : ''}`}
-          onClick={() => setMetodo('efectivo')}
+          className={`metodo-btn${metodo === 0 ? ' active' : ''}`}
+          onClick={() => setMetodo(0)}
           type="button"
         >
           <i className="fas fa-money-bill-wave"></i>
           Efectivo
         </button>
         <button
-          className={`metodo-btn${metodo === 'transferencia' ? ' active' : ''}`}
-          onClick={() => setMetodo('transferencia')}
+          className={`metodo-btn${metodo === 1 ? ' active' : ''}`}
+          onClick={() => setMetodo(1)}
           type="button"
         >
           <i className="fas fa-mobile-alt"></i>
@@ -108,16 +120,13 @@ function PlanCard({ plan }) {
         </button>
       </div>
 
-      {/* Precio */}
-      <div className="plan-precio-wrapper">
+      <div className="plan-precios">
         <div className="plan-precio-row">
-          <span className="plan-price-big size-2xl">{plan.precios[metodo]}</span>
+          <span className={`plan-price-big ${precio.sizeClass || 'size-2xl'}`}>{precio.monto}</span>
           <span className="plan-price-label">/ mes</span>
         </div>
         {plan.notaExtra && <p className="plan-note">{plan.notaExtra}</p>}
-        {plan.cuotas && metodo === 'transferencia' && (
-          <div className="plan-cuota-badge">{plan.cuotas}</div>
-        )}
+        {plan.cuotas && metodo === 1 && <div className="plan-cuota-badge">{plan.cuotas}</div>}
       </div>
 
       <ul className={`plan-benefits ${plan.benefitClass}`}>
@@ -129,17 +138,25 @@ function PlanCard({ plan }) {
         ))}
       </ul>
 
-      <button
-        onClick={handleContratar}
-        className={`plan-cta ${plan.ctaClass}`}
-      >
-        Contratar — {metodo === 'efectivo' ? 'Efectivo' : 'Transferencia'}
+      <button onClick={handleSeleccionar} className={`plan-cta ${plan.ctaClass}`}>
+        Contratar — {precio.metodo}
       </button>
     </div>
   );
 }
 
 export default function Planes() {
+  const [current, setCurrent] = useState(0);
+  const [dir, setDir] = useState('right');
+  const n = planes.length;
+  const prevIdx = (current - 1 + n) % n;
+  const nextIdx = (current + 1) % n;
+
+  const goTo = (idx, direction) => {
+    setDir(direction);
+    setCurrent(idx);
+  };
+
   return (
     <section id="planes" className="planes relative">
       <div className="planes-bg-blur absolute"></div>
@@ -154,54 +171,47 @@ export default function Planes() {
           </p>
         </div>
 
-        <div className="planes-grid grid gap-10">
-          {planes.map((plan) => (
-<<<<<<< HEAD
-            <PlanCard key={plan.nombre} plan={plan} />
-=======
-            <div
-              key={plan.nombre}
-              className={`plan-card flex flex-col p-10 glass ${plan.popular ? 'popular' : 'normal'}`}
-              data-aos="fade-up"
-              data-aos-delay={plan.delay}
-            >
-              {plan.popular && <div className="plan-badge absolute">Más Popular</div>}
+        <div className="planes-carousel-wrapper">
+          <button
+            className="carousel-arrow arrow-left"
+            onClick={() => goTo(prevIdx, 'right')}
+            type="button"
+            aria-label="Plan anterior"
+          >
+            <i className="fas fa-chevron-left"></i>
+          </button>
 
-              <h4 className="plan-name mb-2">{plan.nombre}</h4>
-              <p className="plan-desc mb-6">{plan.subtitulo}</p>
-
-              <div style={{ marginBottom: '2rem' }}>
-                {plan.precios.map((p, i) =>
-                  p.small ? (
-                    <div key={i} className="flex items-baseline gap-1" style={{ marginBottom: '0.5rem' }}>
-                      <span className="plan-price-small">{p.monto}</span>
-                      <span className="plan-price-label">{p.metodo}</span>
-                    </div>
-                  ) : (
-                    <div key={i} className="flex items-baseline gap-1" style={{ marginBottom: '0.5rem' }}>
-                      <span className={`plan-price-big ${p.sizeClass}`}>{p.monto}</span>
-                      <span className="plan-price-label">{p.metodo}</span>
-                    </div>
-                  )
-                )}
-                {plan.notaExtra && <p className="plan-note mt-2">{plan.notaExtra}</p>}
-                {plan.cuotas && <div className="plan-cuota-badge inline-block mt-2">{plan.cuotas}</div>}
-              </div>
-
-              <ul className={`plan-benefits p-0 ${plan.benefitClass}`}>
-                {plan.beneficios.map((b, i) => (
-                  <li className="mb-3" key={i}>
-                    <i className="fas fa-check mr-2"></i>
-                    {b}
-                  </li>
-                ))}
-              </ul>
-
-              <a href="#inscripcion" className={`plan-cta block text-center p-4 ${plan.ctaClass}`}>
-                {plan.ctaTexto}
-              </a>
+          <div className="planes-track">
+            <div className="peek-slot peek-side" onClick={() => goTo(prevIdx, 'right')}>
+              <PlanCard plan={planes[prevIdx]} />
             </div>
->>>>>>> c9adf7a161baf62c42fd1032b5f30f05aa314dac
+            <div className={`peek-slot peek-active dir-${dir}`}>
+              <PlanCard key={current} plan={planes[current]} />
+            </div>
+            <div className="peek-slot peek-side" onClick={() => goTo(nextIdx, 'left')}>
+              <PlanCard plan={planes[nextIdx]} />
+            </div>
+          </div>
+
+          <button
+            className="carousel-arrow arrow-right"
+            onClick={() => goTo(nextIdx, 'left')}
+            type="button"
+            aria-label="Plan siguiente"
+          >
+            <i className="fas fa-chevron-right"></i>
+          </button>
+        </div>
+
+        <div className="carousel-dots">
+          {planes.map((p, i) => (
+            <button
+              key={p.nombre}
+              className={`carousel-dot${i === current ? ' active' : ''}`}
+              onClick={() => goTo(i, i > current ? 'left' : 'right')}
+              type="button"
+              aria-label={p.nombre}
+            />
           ))}
         </div>
       </div>
