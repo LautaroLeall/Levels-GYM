@@ -6,7 +6,7 @@ export default function WhatsAppButton() {
       href="https://wa.me/5493815191501"
       target="_blank"
       rel="noopener noreferrer"
-      className="whatsapp-btn"
+      className="whatsapp-btn fixed flex justify-center items-center"
       aria-label="Chat por WhatsApp"
     >
       <i className="fab fa-whatsapp"></i>

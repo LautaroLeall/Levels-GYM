@@ -1,9 +1,6 @@
 .hero {
   position: relative;
   min-height: 100vh;
-  display: flex;
-  align-items: center;
-  padding-top: 5rem;
   overflow: hidden;
 }
 
@@ -11,16 +8,12 @@
   max-width: 80rem;
   margin: 0 auto;
   padding: 0 1.5rem;
-  display: grid;
-  gap: 3rem;
-  align-items: center;
   position: relative;
   z-index: 10;
 }
 
 /* Badge */
 .hero-badge {
-  display: inline-block;
   padding: 0.375rem 1rem;
   border-radius: 9999px;
   background-color: rgba(37, 99, 235, 0.2);
@@ -30,14 +23,12 @@
   font-weight: 700;
   text-transform: uppercase;
   letter-spacing: 0.15em;
-  margin-bottom: 1.5rem;
 }
 
 /* Título */
 .hero-title {
   font-size: 3.75rem;
   font-weight: 900;
-  margin-bottom: 1.5rem;
   line-height: 1;
   color: #ffffff;
 }
@@ -46,18 +37,11 @@
   font-size: 1.125rem;
   color: #94a3b8;
   max-width: 32rem;
-  margin-bottom: 2.5rem;
   line-height: 1.75;
   font-style: italic;
 }
 
 /* CTA */
-.hero-cta-group {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 1.25rem;
-}
-
 .hero-cta-btn {
   padding: 1rem 2rem;
   background-color: #ffffff;
@@ -65,9 +49,6 @@
   font-weight: 700;
   border-radius: 1rem;
   transition: background-color 0.3s;
-  display: flex;
-  align-items: center;
-  gap: 0.5rem;
 }
 
 .hero-cta-btn i {
@@ -75,15 +56,7 @@
 }
 
 .hero-community {
-  display: flex;
-  align-items: center;
-  gap: 1rem;
-  padding-left: 1.5rem;
   border-left: 1px solid rgba(255, 255, 255, 0.1);
-}
-
-.hero-avatars {
-  display: flex;
 }
 
 .hero-avatars img {
@@ -110,9 +83,6 @@
 /* Logo animado */
 .hero-logo-container {
   position: relative;
-  display: flex;
-  justify-content: center;
-  align-items: center;
 }
 
 .float-logo {
@@ -125,9 +95,6 @@
   height: 15rem;
   border-radius: 50%;
   box-shadow: 0 0 100px rgba(37, 99, 235, 0.4);
-  display: flex;
-  align-items: center;
-  justify-content: center;
   transform: rotate(3deg);
   overflow: hidden;
 }
@@ -137,7 +104,7 @@
   height: 75%;
   object-fit: contain;
   position: relative;
-  /* left: -8px; */
+  left: -1px;
   z-index: 2;
 }
 
@@ -173,13 +140,13 @@
   }
 }
 
-/* === Animaciones de entrada del Hero === */
-
+/* Animaciones de entrada del Hero */
 @keyframes heroSlideLeft {
   from {
     opacity: 0;
     transform: translateX(-90px);
   }
+
   to {
     opacity: 1;
     transform: translateX(0);
@@ -191,6 +158,7 @@
     opacity: 0;
     transform: translateX(90px);
   }
+
   to {
     opacity: 1;
     transform: translateX(0);

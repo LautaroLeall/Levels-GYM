@@ -1,6 +1,5 @@
 .inscripcion {
   padding: 6rem 0;
-  position: relative;
   overflow: hidden;
   background-color: rgba(15, 23, 42, 0.5);
 }
@@ -9,16 +8,12 @@
   max-width: 80rem;
   margin: 0 auto;
   padding: 0 1.5rem;
-  display: grid;
-  gap: 4rem;
-  align-items: center;
 }
 
 /* Columna izquierda */
 .inscripcion-title {
   font-size: 2.25rem;
   font-weight: 800;
-  margin-bottom: 1.5rem;
   text-transform: uppercase;
   line-height: 1.15;
   font-style: italic;
@@ -29,31 +24,15 @@
 .inscripcion-desc {
   color: #94a3b8;
   font-size: 1.125rem;
-  margin-bottom: 2rem;
   font-style: italic;
 }
 
 /* Beneficios */
-.inscripcion-benefits {
-  display: flex;
-  flex-direction: column;
-  gap: 1.5rem;
-}
-
-.inscripcion-benefit {
-  display: flex;
-  align-items: center;
-  gap: 1rem;
-}
-
 .inscripcion-benefit-icon {
   width: 3rem;
   height: 3rem;
   border-radius: 9999px;
   background-color: rgba(37, 99, 235, 0.2);
-  display: flex;
-  align-items: center;
-  justify-content: center;
   color: #60a5fa;
   border: 1px solid rgba(37, 99, 235, 0.3);
   flex-shrink: 0;
@@ -70,31 +49,17 @@
 
 /* Formulario */
 .inscripcion-form-box {
-  padding: 2rem;
   border-radius: 2.5rem;
   border-left: 4px solid #2563eb;
   box-shadow: 0 25px 50px rgba(30, 64, 175, 0.1);
 }
 
-.inscripcion-form {
-  display: flex;
-  flex-direction: column;
-  gap: 1.25rem;
-}
-
-.inscripcion-form-row {
-  display: grid;
-  gap: 1.25rem;
-}
-
 .inscripcion-field label {
-  display: block;
   font-size: 0.75rem;
   font-weight: 700;
   text-transform: uppercase;
   letter-spacing: 0.15em;
   color: #64748b;
-  margin-bottom: 0.5rem;
 }
 
 .inscripcion-field input,
