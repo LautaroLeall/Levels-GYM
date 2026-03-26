@@ -7,7 +7,7 @@ export default function Hero() {
         {/* Texto */}
         <div>
           <span className="hero-badge inline-block mb-8">
-            High Performance Center
+            Centro de alto rendimiento 
           </span>
           <h1 className="hero-title mb-3">
             TÚ <span className="blue-gradient-text">NIVEL</span>

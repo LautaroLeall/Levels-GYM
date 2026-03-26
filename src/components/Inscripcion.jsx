@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import '../styles/Inscripcion.css';
 
 const beneficios = [
@@ -8,12 +8,26 @@ const beneficios = [
 ];
 
 export default function Inscripcion() {
-  const [formData, setFormData] = useState({
-    nombre: '',
-    whatsapp: '',
-    membresia: 'Plan Semestral (3 cuotas de $80k)',
-    objetivo: '',
+  const [formData, setFormData] = useState(() => {
+    const stored = sessionStorage.getItem('planSeleccionado');
+    if (stored) {
+      try {
+        const { plan, metodo } = JSON.parse(stored);
+        sessionStorage.removeItem('planSeleccionado');
+        return { nombre: '', whatsapp: '', membresia: `Plan ${plan}`, metodoPago: metodo, objetivo: '' };
+      } catch { /* ignorar */ }
+    }
+    return { nombre: '', whatsapp: '', membresia: 'Plan Mensual', metodoPago: 'Efectivo', objetivo: '' };
   });
+
+  useEffect(() => {
+    const onPlan = (e) => {
+      const { plan, metodo } = e.detail;
+      setFormData(prev => ({ ...prev, membresia: `Plan ${plan}`, metodoPago: metodo }));
+    };
+    window.addEventListener('planSeleccionado', onPlan);
+    return () => window.removeEventListener('planSeleccionado', onPlan);
+  }, []);
 
   const handleChange = (e) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
@@ -21,8 +35,10 @@ export default function Inscripcion() {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    const mensaje = `¡Hola! Quiero inscribirme en Levels.%0A%0A*Nombre:* ${formData.nombre}%0A*WhatsApp:* ${formData.whatsapp}%0A*Membresía:* ${formData.membresia}%0A*Objetivo:* ${formData.objetivo || 'No especificado'}`;
-    window.open(`https://wa.me/5493815191501?text=${mensaje}`, '_blank');
+    const esTransferencia = formData.metodoPago === 'Transferencia';
+    const base = `¡Hola! Quiero inscribirme en Levels.%0A%0A*Nombre:* ${formData.nombre}%0A*WhatsApp:* ${formData.whatsapp}%0A*Membresía:* ${formData.membresia}%0A*Método de pago:* ${formData.metodoPago}%0A*Objetivo:* ${formData.objetivo || 'No especificado'}`;
+    const extra = esTransferencia ? `%0A%0AAdjunto comprobante de transferencia ⬆️` : '';
+    window.open(`https://wa.me/5493815191501?text=${base}${extra}`, '_blank');
   };
 
   return (
@@ -85,10 +101,52 @@ export default function Inscripcion() {
                 onChange={handleChange}
                 required
               >
-                <option>Plan Mensual ($44k/$46k)</option>
-                <option>Plan Trimestral ($119k)</option>
-                <option>Plan Semestral (3 cuotas de $80k)</option>
+                <option value="Plan Mensual">Plan Mensual ($44.000 efectivo / $46.000 transferencia)</option>
+                <option value="Plan Trimestral">Plan Trimestral ($119.000 efectivo / $124.000 transferencia)</option>
+                <option value="Plan 6 Meses">Plan 6 Meses ($229.000 efectivo / $240.000 transferencia)</option>
+                <option value="Plan Anual">Plan Anual ($399.000 efectivo / $419.000 transferencia)</option>
               </select>
+            </div>
+
+            <div className="inscripcion-field">
+              <label className="mb-3 block">Método de Pago</label>
+              <div className="inscripcion-metodo-toggle">
+                <button
+                  type="button"
+                  className={`inscripcion-metodo-btn${formData.metodoPago === 'Efectivo' ? ' active' : ''}`}
+                  onClick={() => setFormData(prev => ({ ...prev, metodoPago: 'Efectivo' }))}
+                >
+                  <i className="fas fa-money-bill-wave"></i>
+                  Efectivo
+                </button>
+                <button
+                  type="button"
+                  className={`inscripcion-metodo-btn${formData.metodoPago === 'Transferencia' ? ' active' : ''}`}
+                  onClick={() => setFormData(prev => ({ ...prev, metodoPago: 'Transferencia' }))}
+                >
+                  <i className="fas fa-mobile-alt"></i>
+                  Transferencia
+                </button>
+              </div>
+
+              {formData.metodoPago === 'Transferencia' && (
+                <div className="insc-alias-box">
+                  <p className="insc-alias-title">
+                    <i className="fas fa-university"></i> Alias para transferir
+                  </p>
+                  <div className="insc-alias-list">
+                    <div className="insc-alias-row">
+                      <span className="insc-alias-sede">Sede Yerba Buena</span>
+                      <span className="insc-alias-value">Levels.ar</span>
+                    </div>
+                    <div className="insc-alias-row">
+                      <span className="insc-alias-sede">Sede Centro</span>
+                      <span className="insc-alias-value">Levelscentro</span>
+                    </div>
+                  </div>
+                  <p className="insc-alias-nota">Al enviar, te abrimos WhatsApp para adjuntar el comprobante.</p>
+                </div>
+              )}
             </div>
 
             <div className="inscripcion-field">
