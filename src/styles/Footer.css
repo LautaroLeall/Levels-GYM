@@ -1,6 +1,5 @@
 .footer {
   background-color: #020617;
-  padding-bottom: 1.5rem;
   border-top: 1px solid rgba(255, 255, 255, 0.05);
 }
 
@@ -12,8 +11,7 @@
 }
 
 /* Logo */
-.footer-logo img {
-  position: relative;
+.img-footer {
   width: 2.2rem;
   height: 2.2rem;
   object-fit: contain;

@@ -14,7 +14,7 @@ export default function SocialSidebar() {
       </a>
       <span className="social-sidebar-divider"></span>
       <a
-        href="https://instagram.com/levels.gym.tuc"
+        href="https://www.instagram.com/levels.ar/"
         target="_blank"
         rel="noopener noreferrer"
         aria-label="Instagram"
