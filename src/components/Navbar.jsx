@@ -50,9 +50,7 @@ export default function Navbar() {
               </a>
             ))}
             <a
-              href="https://wa.me/5493815191501"
-              target="_blank"
-              rel="noopener noreferrer"
+              href="#inscripcion"
               className="cta-btn"
             >
               Unirme
@@ -88,9 +86,7 @@ export default function Navbar() {
             </a>
           ))}
           <a
-            href="https://wa.me/5493815191501"
-            target="_blank"
-            rel="noopener noreferrer"
+            href="#inscripcion"
             className="cta-mobile"
             onClick={closeMenu}
           >
