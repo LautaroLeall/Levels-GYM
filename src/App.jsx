@@ -13,7 +13,8 @@ import Inscripcion from './components/Inscripcion';
 import Galeria from './components/Galeria';
 import Sedes from './components/Sedes';
 import Footer from './components/Footer';
-import WhatsAppButton from './components/WhatsAppButton';
+
+import SocialSidebar from './components/SocialSidebar';
 
 export default function App() {
   useEffect(() => {
@@ -36,7 +37,8 @@ export default function App() {
       <Galeria />
       <Inscripcion />
       <Footer />
-      <WhatsAppButton />
+      
+      <SocialSidebar />
     </div>
   );
 }
