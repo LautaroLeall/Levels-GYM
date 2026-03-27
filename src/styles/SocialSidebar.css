@@ -1,8 +1,8 @@
 /* === Mobile: abajo izquierda === */
 .social-sidebar {
   position: fixed;
-  left: 1.25rem;
-  bottom: 1.5rem;
+  right: 0.5rem;
+  bottom: 1rem;
   z-index: 90;
   display: flex;
   flex-direction: column;
@@ -14,7 +14,7 @@
   -webkit-backdrop-filter: blur(16px);
   border: 1px solid rgba(255, 255, 255, 0.09);
   border-radius: 1.25rem;
-  padding: 0.875rem 0.75rem;
+  padding: 0.7rem 0.5rem;
   gap: 0.25rem;
   box-shadow: 0 8px 32px rgba(0, 0, 0, 0.35);
 }
@@ -45,11 +45,12 @@
 /* === Desktop: centrado verticalmente === */
 @media (min-width: 1024px) {
   .social-sidebar {
-    left: 1.5rem;
+    left: 0.5rem;
+    right: auto;
     bottom: auto;
     top: 50%;
     transform: translateY(-50%);
-    padding: 1rem 0.875rem;
+    padding: 1rem 0.5rem;
     gap: 0.25rem;
     border-radius: 1.5rem;
   }

@@ -6,10 +6,9 @@ const planes = [
     nombre: 'Mensual',
     subtitulo: 'Ideal para empezar tu camino.',
     precios: [
-      { monto: '$44.000', metodo: 'Efectivo', sizeClass: 'size-2xl' },
-      { monto: '$46.000', metodo: 'Transferencia', small: true },
+      { monto: '$46.000', metodo: 'Efectivo', sizeClass: 'size-2xl' },
+      { monto: '$48.000', metodo: 'Transferencia', small: true },
     ],
-    notaExtra: null,
     cuotas: null,
     beneficios: [
       'Acceso libre sedes YB y Centro',
@@ -17,18 +16,15 @@ const planes = [
       'Zona de musculación y funcional',
     ],
     ctaTexto: 'Seleccionar Plan',
-    ctaClass: 'outline',
-    popular: false,
-    benefitClass: 'muted',
+    ctaClass: 'filled',
+    benefitClass: 'light',
   },
   {
     nombre: 'Trimestral',
     subtitulo: 'Compromiso real con tus resultados.',
     precios: [
-      { monto: '$119.000', metodo: 'Efectivo', sizeClass: 'size-xl' },
-      { monto: '$124.000', metodo: 'Transferencia', small: true },
+      { monto: '$125.000', metodo: 'Efectivo', sizeClass: 'size-2xl' },
     ],
-    notaExtra: 'Ahorrá entrenando 3 meses',
     cuotas: null,
     beneficios: [
       'Acceso libre sedes YB y Centro',
@@ -37,37 +33,42 @@ const planes = [
     ],
     ctaTexto: 'Adquirir Ahora',
     ctaClass: 'filled',
-    popular: true,
     benefitClass: 'light',
   },
   {
-    nombre: '6 Meses',
+    nombre: 'Semestral',
     subtitulo: 'Transformación total garantizada.',
     precios: [
-      { monto: '$229.000', metodo: 'Efectivo', sizeClass: 'size-2xl' },
-      { monto: '$240.000', metodo: 'Transferencia', small: true },
+      { monto: '$252.000', metodo: 'Efectivo', sizeClass: 'size-2xl' },
     ],
-    notaExtra: null,
-    cuotas: '3 Cuotas de $80.000',
+    cuotas: '3 Cuotas de $84.000',
     beneficios: [
       'Acceso libre sedes YB y Centro',
       'Evaluación inicial básica',
       'Zona de musculación y funcional',
     ],
     ctaTexto: 'Seleccionar Plan',
-    ctaClass: 'outline',
-    popular: false,
-    benefitClass: 'muted',
+    ctaClass: 'filled',
+    benefitClass: 'light',
   },
   {
     nombre: 'Anual',
     subtitulo: 'El compromiso máximo, el mejor precio.',
     precios: [
-      { monto: '$399.000', metodo: 'Efectivo', sizeClass: 'size-xl' },
-      { monto: '$419.000', metodo: 'Transferencia', small: true },
+      {
+        monto: '$480.000',
+        metodo: 'Efectivo',
+        sizeClass: 'size-2xl',
+        cuotas: '3 Cuotas de $160.000'
+      },
+      {
+        monto: '$510.000',
+        metodo: 'Transferencia',
+        small: true,
+        cuotas: '3 Cuotas de $170.000'
+      },
     ],
-    notaExtra: 'Ahorrá más de $129.000 vs mensual',
-    cuotas: '6 Cuotas de $70.000',
+    cuotas: null,
     beneficios: [
       'Acceso libre sedes YB y Centro',
       'Evaluación inicial básica',
@@ -75,14 +76,14 @@ const planes = [
     ],
     ctaTexto: 'Adquirir Ahora',
     ctaClass: 'filled',
-    popular: false,
     benefitClass: 'light',
   },
 ];
 
 function PlanCard({ plan }) {
-  const [metodo, setMetodo] = useState(0); // 0 = efectivo, 1 = transferencia
+  const [metodo, setMetodo] = useState(0);
   const precio = plan.precios[metodo];
+  const cuotasRender = precio.cuotas || plan.cuotas;
 
   const handleSeleccionar = () => {
     sessionStorage.setItem('planSeleccionado', JSON.stringify({
@@ -101,32 +102,47 @@ function PlanCard({ plan }) {
       <h4 className="plan-name">{plan.nombre}</h4>
       <p className="plan-desc">{plan.subtitulo}</p>
 
-      <div className="plan-metodo-toggle">
-        <button
-          className={`metodo-btn${metodo === 0 ? ' active' : ''}`}
-          onClick={() => setMetodo(0)}
-          type="button"
-        >
-          <i className="fas fa-money-bill-wave"></i>
-          Efectivo
-        </button>
-        <button
-          className={`metodo-btn${metodo === 1 ? ' active' : ''}`}
-          onClick={() => setMetodo(1)}
-          type="button"
-        >
-          <i className="fas fa-mobile-alt"></i>
-          Transferencia
-        </button>
-      </div>
+      {plan.precios.length > 1 ? (
+        <div className="plan-metodo-toggle">
+          {plan.precios.map((p, idx) => (
+            <button
+              key={p.metodo}
+              className={`metodo-btn${metodo === idx ? ' active' : ''}`}
+              onClick={() => setMetodo(idx)}
+              type="button"
+            >
+              <i className={p.metodo === 'Efectivo' ? 'fas fa-money-bill-wave' : 'fas fa-mobile-alt'}></i>
+              {p.metodo}
+            </button>
+          ))}
+        </div>
+      ) : (
+        <div className="plan-metodo-toggle" style={{ opacity: 0.9, pointerEvents: 'none' }}>
+          <button className="metodo-btn active" type="button">
+            <i className={precio.metodo === 'Efectivo' ? 'fas fa-money-bill-wave' : 'fas fa-mobile-alt'}></i>
+            {precio.metodo}
+          </button>
+        </div>
+      )}
 
       <div className="plan-precios">
         <div className="plan-precio-row">
           <span className={`plan-price-big ${precio.sizeClass || 'size-2xl'}`}>{precio.monto}</span>
-          <span className="plan-price-label">/ mes</span>
+          <span className="plan-price-label">/ {plan.nombre === 'Mensual' ? 'mes' : 'total'}</span>
         </div>
-        {plan.notaExtra && <p className="plan-note">{plan.notaExtra}</p>}
-        {plan.cuotas && metodo === 1 && <div className="plan-cuota-badge">{plan.cuotas}</div>}
+        {cuotasRender && (
+          <div className="flex flex-wrap gap-1">
+            {Array.isArray(cuotasRender) ? (
+              cuotasRender.map((cuota, idx) => (
+                <div key={idx} className="plan-cuota-badge">
+                  {cuota}
+                </div>
+              ))
+            ) : (
+              <div className="plan-cuota-badge">{cuotasRender}</div>
+            )}
+          </div>
+        )}
       </div>
 
       <ul className={`plan-benefits ${plan.benefitClass}`}>
@@ -139,7 +155,7 @@ function PlanCard({ plan }) {
       </ul>
 
       <button onClick={handleSeleccionar} className={`plan-cta ${plan.ctaClass}`}>
-        Contratar — {precio.metodo}
+        Contratar — <i className={precio.metodo === 'Efectivo' ? 'fas fa-money-bill-wave' : 'fas fa-mobile-alt'} style={{ marginLeft: '4px' }}></i>
       </button>
     </div>
   );
@@ -162,11 +178,11 @@ export default function Planes() {
       <div className="planes-bg-blur absolute"></div>
 
       <div className="planes-container relative">
-        <div className="planes-header text-center mb-10" data-aos="fade-up">
+        <div className="planes-header text-center mb-5" data-aos="fade-up">
           <h2 className="planes-title">
             Nuestros <span className="blue-gradient-text">Planes</span>
           </h2>
-          <p className="planes-subtitle mt-2">
+          <p className="planes-subtitle mt-1">
             Elegí el plan que mejor se adapte a tu ritmo y objetivos.
           </p>
         </div>
@@ -182,13 +198,13 @@ export default function Planes() {
           </button>
 
           <div className="planes-track">
-            <div className="peek-slot peek-side" onClick={() => goTo(prevIdx, 'right')}>
+            <div className="peek-slot peek-side">
               <PlanCard plan={planes[prevIdx]} />
             </div>
             <div className={`peek-slot peek-active dir-${dir}`}>
               <PlanCard key={current} plan={planes[current]} />
             </div>
-            <div className="peek-slot peek-side" onClick={() => goTo(nextIdx, 'left')}>
+            <div className="peek-slot peek-side">
               <PlanCard plan={planes[nextIdx]} />
             </div>
           </div>
