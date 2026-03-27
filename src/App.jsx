@@ -26,7 +26,7 @@ export default function App() {
   }, []);
 
   return (
-    <div className="text-slate-100 overflow-x-hidden">
+    <div className="overflow-x-hidden">
       <Navbar />
       <Hero />
       <Metodo />
@@ -37,7 +37,7 @@ export default function App() {
       <Galeria />
       <Inscripcion />
       <Footer />
-      
+
       <SocialSidebar />
     </div>
   );
