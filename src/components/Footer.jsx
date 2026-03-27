@@ -22,13 +22,13 @@ const developers = [
 
 export default function Footer() {
   return (
-    <footer className="footer pt-13 pb-6">
-      <div className="footer-container grid gap-6">
+    <footer className="footer pt-10 pb-5">
+      <div className="footer-container grid gap-5">
         {/* Logo + Descripción */}
         <div>
           <div className="footer-logo flex items-center mb-3">
             <span>Le </span>
-            <img src="/logo-levels.png" alt="Levels Logo" />
+            <img src="/logo-levels.png" alt="Levels Logo" className='img-footer relative' />
             <span>els</span>
           </div>
           <p className="footer-brand-desc mb-4">
@@ -69,7 +69,7 @@ export default function Footer() {
       {/* Copyright + Devs */}
       <div className="footer-bottom">
         <div className="footer-copyright-row flex flex-col gap-3 mb-5">
-          <p className='mb-5'>&copy; 2024 Levels Argentina. Designed for Performance.</p>
+          <p className='mb-5'>&copy; 2024 Levels Argentina.</p>
           <div className="footer-devs flex flex-col">
             <span className="footer-devs-label">Desarrollado por</span>
             <div className="footer-devs-list flex flex-col gap-3">
