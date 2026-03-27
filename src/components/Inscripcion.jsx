@@ -2,8 +2,7 @@ import { useState, useEffect } from 'react';
 import '../styles/Inscripcion.css';
 
 const beneficios = [
-  'Evaluación Biomecánica Inicial',
-  'Acceso a Zona de Recovery VIP',
+  'Acceso a ambas sedes',
   'Planes 100% Personalizados',
 ];
 
@@ -30,7 +29,17 @@ export default function Inscripcion() {
   }, []);
 
   const handleChange = (e) => {
-    setFormData({ ...formData, [e.target.name]: e.target.value });
+    const { name, value } = e.target;
+    if (name === 'membresia') {
+      const soloEfectivo = value === 'Plan Trimestral' || value === 'Plan 6 Meses';
+      setFormData(prev => ({ 
+        ...prev, 
+        [name]: value,
+        metodoPago: soloEfectivo ? 'Efectivo' : prev.metodoPago 
+      }));
+    } else {
+      setFormData(prev => ({ ...prev, [name]: value }));
+    }
   };
 
   const handleSubmit = (e) => {
@@ -40,6 +49,8 @@ export default function Inscripcion() {
     const extra = esTransferencia ? `%0A%0AAdjunto comprobante de transferencia ⬆️` : '';
     window.open(`https://wa.me/5493815191501?text=${base}${extra}`, '_blank');
   };
+
+  const esSoloEfectivo = formData.membresia === 'Plan Trimestral' || formData.membresia === 'Plan 6 Meses';
 
   return (
     <section id="inscripcion" className="inscripcion relative">
@@ -66,11 +77,11 @@ export default function Inscripcion() {
         </div>
 
         {/* Formulario */}
-        <div className="inscripcion-form-box glass p-10" data-aos="fade-left">
-          <form className="inscripcion-form flex flex-col gap-5" onSubmit={handleSubmit}>
-            <div className="inscripcion-form-row grid gap-5">
+        <div className="inscripcion-form-box glass p-8" data-aos="fade-left">
+          <form className="inscripcion-form flex flex-col gap-4" onSubmit={handleSubmit}>
+            <div className="inscripcion-form-row grid gap-4">
               <div className="inscripcion-field">
-                <label className="mb-3 block">Nombre Completo</label>
+                <label className="mb-2 block">Nombre Completo</label>
                 <input
                   type="text"
                   name="nombre"
@@ -81,7 +92,7 @@ export default function Inscripcion() {
                 />
               </div>
               <div className="inscripcion-field">
-                <label className="mb-3 block">WhatsApp</label>
+                <label className="mb-2 block">WhatsApp</label>
                 <input
                   type="tel"
                   name="whatsapp"
@@ -94,42 +105,59 @@ export default function Inscripcion() {
             </div>
 
             <div className="inscripcion-field">
-              <label className="mb-3 block">Membresía Elegida</label>
+              <label className="mb-2 block">Membresía Elegida</label>
               <select
                 name="membresia"
                 value={formData.membresia}
                 onChange={handleChange}
                 required
               >
-                <option value="Plan Mensual">Plan Mensual ($44.000 efectivo / $46.000 transferencia)</option>
-                <option value="Plan Trimestral">Plan Trimestral ($119.000 efectivo / $124.000 transferencia)</option>
-                <option value="Plan 6 Meses">Plan 6 Meses ($229.000 efectivo / $240.000 transferencia)</option>
-                <option value="Plan Anual">Plan Anual ($399.000 efectivo / $419.000 transferencia)</option>
+                <option value="Plan Mensual">
+                  Plan Mensual ($46.000 efectivo / $48.000 transferencia)
+                </option>
+                <option value="Plan Trimestral">
+                  Plan Trimestral ($125.000 efectivo)
+                </option>
+                <option value="Plan 6 Meses">
+                  Plan 6 Meses ($252.000 efectivo)
+                </option>
+                <option value="Plan Anual">
+                  Plan Anual ($480.000 efectivo / $510.000 transferencia)
+                </option>
               </select>
             </div>
 
             <div className="inscripcion-field">
-              <label className="mb-3 block">Método de Pago</label>
-              <div className="inscripcion-metodo-toggle">
-                <button
-                  type="button"
-                  className={`inscripcion-metodo-btn${formData.metodoPago === 'Efectivo' ? ' active' : ''}`}
-                  onClick={() => setFormData(prev => ({ ...prev, metodoPago: 'Efectivo' }))}
-                >
-                  <i className="fas fa-money-bill-wave"></i>
-                  Efectivo
-                </button>
-                <button
-                  type="button"
-                  className={`inscripcion-metodo-btn${formData.metodoPago === 'Transferencia' ? ' active' : ''}`}
-                  onClick={() => setFormData(prev => ({ ...prev, metodoPago: 'Transferencia' }))}
-                >
-                  <i className="fas fa-mobile-alt"></i>
-                  Transferencia
-                </button>
-              </div>
+              <label className="mb-2 block">Método de Pago</label>
+              
+              {esSoloEfectivo ? (
+                <div className="inscripcion-metodo-toggle" style={{ opacity: 0.9, pointerEvents: 'none' }}>
+                  <button type="button" className="inscripcion-metodo-btn active w-full" style={{ flex: 1 }}>
+                    <i className="fas fa-money-bill-wave"></i> Efectivo
+                  </button>
+                </div>
+              ) : (
+                <div className="inscripcion-metodo-toggle">
+                  <button
+                    type="button"
+                    className={`inscripcion-metodo-btn${formData.metodoPago === 'Efectivo' ? ' active' : ''}`}
+                    onClick={() => setFormData(prev => ({ ...prev, metodoPago: 'Efectivo' }))}
+                  >
+                    <i className="fas fa-money-bill-wave"></i>
+                    Efectivo
+                  </button>
+                  <button
+                    type="button"
+                    className={`inscripcion-metodo-btn${formData.metodoPago === 'Transferencia' ? ' active' : ''}`}
+                    onClick={() => setFormData(prev => ({ ...prev, metodoPago: 'Transferencia' }))}
+                  >
+                    <i className="fas fa-mobile-alt"></i>
+                    Transferencia
+                  </button>
+                </div>
+              )}
 
-              {formData.metodoPago === 'Transferencia' && (
+              {formData.metodoPago === 'Transferencia' && !esSoloEfectivo && (
                 <div className="insc-alias-box">
                   <p className="insc-alias-title">
                     <i className="fas fa-university"></i> Alias para transferir
@@ -150,12 +178,12 @@ export default function Inscripcion() {
             </div>
 
             <div className="inscripcion-field">
-              <label className="mb-3 block">Mensaje Adicional (opcional)</label>
+              <label className="mb-2 block">Mensaje Adicional (opcional)</label>
               <textarea
                 name="objetivo"
                 value={formData.objetivo}
                 onChange={handleChange}
-                rows="3"
+                rows="2"
                 placeholder="Contanos qué querés lograr..."
               ></textarea>
             </div>
