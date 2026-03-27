@@ -3,7 +3,7 @@ import '../styles/Servicios.css';
 
 const serviciosBase = [
   {
-    img: './pesas.jpeg',
+    img: './carrousel/entrenamiento-adaptivo.png',
     alt: 'Entrenamiento',
     icono: 'fa-dumbbell',
     iconoClass: 'bg-1',
@@ -11,7 +11,7 @@ const serviciosBase = [
     descripcion: 'No creemos en rutinas genéricas. Ajustamos cada sesión según tu fatiga y progreso real medido por tecnología.',
   },
   {
-    img: './julian.jpeg',
+    img: './carrousel/julian-nutricion.png',
     alt: 'Nutrición',
     icono: 'fa-utensils',
     iconoClass: 'bg-1',
@@ -19,7 +19,7 @@ const serviciosBase = [
     descripcion: 'Planificación enfocada en el rendimiento y la composición corporal sostenible. Hábitos, no dietas.',
   },
   {
-    img: './recovery.jpg',
+    img: './carrousel/recovery-rehabilitacion.png',
     alt: 'Kinesiología',
     icono: 'fa-user-md',
     iconoClass: 'bg-1',
@@ -27,7 +27,7 @@ const serviciosBase = [
     descripcion: 'Kinesiología aplicada al deporte. Reeducamos el movimiento para evitar lesiones y mejorar tu técnica.',
   },
   {
-    img: './ñora.jpeg',
+    img: './carrousel/personalizado-50.png',
     alt: 'Adulto Mayor',
     objectPosition: 'center 20%',
     icono: 'fa-heartbeat',
@@ -36,12 +36,20 @@ const serviciosBase = [
     descripcion: 'Un profesional 100% dedicado a acompañarte, cuidarte y motivarte. Entrenamiento adaptado para mejorar tu calidad de vida, movilidad y longevidad.',
   },
   {
-    img: './futbol.jpeg',
+    img: './carrousel/preparacion-futbol.png',
     alt: 'Fútbol',
     icono: 'fa-futbol',
     iconoClass: 'bg-1',
     titulo: 'Preparación Futbolística',
     descripcion: 'Clases personalizadas exclusivas para jugadores de fútbol. Optimizamos tu fuerza, agilidad, velocidad y resistencia para rendir al máximo en la cancha.',
+  },
+  {
+    img: '/carrousel/influencia-deportiva.png',
+    alt: 'Sponsoreos',
+    icono: 'fa-handshake',
+    iconoClass: 'bg-1',
+    titulo: 'Sponsoreos y Clubes',
+    descripcion: 'Acompañamos a los mejores atletas, academias e instituciones deportivas hacia su máximo potencial físico y competitivo.',
   },
 ];
 
@@ -51,12 +59,6 @@ export default function Servicios() {
   const wrapperRef = useRef(null);
   const trackRef = useRef(null);
   const [isPaused, setIsPaused] = useState(false);
-
-  const scrollPrev = () => {
-    if (wrapperRef.current) {
-      wrapperRef.current.scrollBy({ left: -200, behavior: 'smooth' });
-    }
-  };
 
   const scrollNext = () => {
     if (wrapperRef.current) {
@@ -77,11 +79,8 @@ export default function Servicios() {
             </p>
           </div>
 
-          <div className="flex gap-4">
-            <button onClick={scrollPrev} className="carousel-arrow flex items-center justify-center" aria-label="Ver anterior">
-              <i className="fas fa-chevron-left"></i>
-            </button>
-            <button onClick={scrollNext} className="carousel-arrow flex items-center justify-center" aria-label="Ver siguiente">
+          <div>
+            <button onClick={scrollNext} className="servicios-arrow flex items-center justify-center" aria-label="Ver siguiente">
               <i className="fas fa-chevron-right"></i>
             </button>
           </div>

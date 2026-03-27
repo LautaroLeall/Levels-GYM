@@ -56,11 +56,11 @@
 }
 
 /* Flechas de navegación del carrusel */
-.carousel-arrow {
+.servicios-arrow {
   width: 3rem;
   height: 3rem;
   border-radius: 50%;
-  background: rgba(30, 41, 59, 0.8);
+  background: rgba(30, 41, 59, 1);
   border: 1px solid rgba(255, 255, 255, 0.1);
   color: #fff;
   cursor: pointer;
@@ -68,7 +68,7 @@
   z-index: 20;
 }
 
-.carousel-arrow:active {
+.servicios-arrow:active {
   transform: scale(0.95);
 }
 
@@ -181,7 +181,7 @@
 }
 
 @media (hover: hover) and (pointer: fine) {
-  .carousel-arrow:hover {
+  .servicios-arrow:hover {
     background: #2563eb;
     border-color: #3b82f6;
     transform: scale(1.1);
