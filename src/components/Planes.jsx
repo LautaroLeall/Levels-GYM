@@ -12,8 +12,7 @@ const planes = [
     cuotas: null,
     beneficios: [
       'Acceso libre sedes YB y Centro',
-      'Evaluación inicial básica',
-      'Zona de musculación y funcional',
+      'Planificación personalizada según tus objetivos',
     ],
     ctaTexto: 'Seleccionar Plan',
     ctaClass: 'filled',
@@ -28,8 +27,7 @@ const planes = [
     cuotas: null,
     beneficios: [
       'Acceso libre sedes YB y Centro',
-      'Evaluación inicial básica',
-      'Zona de musculación y funcional',
+      'Planificación personalizada según tus objetivos',
     ],
     ctaTexto: 'Adquirir Ahora',
     ctaClass: 'filled',
@@ -43,13 +41,13 @@ const planes = [
     ],
     cuotas: '3 Cuotas de $84.000',
     beneficios: [
-      'Acceso libre sedes YB y Centro',
-      'Evaluación inicial básica',
-      'Zona de musculación y funcional',
+      'Planificación personalizada según tus objetivos',
+      'Evaluación tecnológica de fuerza y potencia',
+      'Descuento preferencial en sesiones de sauna y recovery',
     ],
     ctaTexto: 'Seleccionar Plan',
     ctaClass: 'filled',
-    benefitClass: 'light',
+    benefitClass: 'light compact',
   },
   {
     nombre: 'Anual',
@@ -70,13 +68,13 @@ const planes = [
     ],
     cuotas: null,
     beneficios: [
-      'Acceso libre sedes YB y Centro',
-      'Evaluación inicial básica',
-      'Zona de musculación y funcional',
+      'Planificación personalizada según tus objetivos',
+      'Evaluación tecnológica de fuerza y potencia',
+      'Descuento preferencial en sesiones de sauna y recovery',
     ],
     ctaTexto: 'Adquirir Ahora',
     ctaClass: 'filled',
-    benefitClass: 'light',
+    benefitClass: 'light compact',
   },
 ];
 

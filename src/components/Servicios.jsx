@@ -17,6 +17,7 @@ const serviciosBase = [
     iconoClass: 'bg-1',
     titulo: 'Nutrición Evolutiva',
     descripcion: 'Planificación enfocada en el rendimiento y la composición corporal sostenible. Hábitos, no dietas.',
+    profesional: 'Julian Amduni',
   },
   {
     img: './carrousel/recovery-rehabilitacion.png',
@@ -42,6 +43,7 @@ const serviciosBase = [
     iconoClass: 'bg-1',
     titulo: 'Preparación Futbolística',
     descripcion: 'Clases personalizadas exclusivas para jugadores de fútbol. Optimizamos tu fuerza, agilidad, velocidad y resistencia para rendir al máximo en la cancha.',
+    profesional: 'Raul Veron',
   },
   {
     img: '/carrousel/influencia-deportiva.png',
@@ -107,6 +109,9 @@ export default function Servicios() {
                 </div>
                 <h4 className="service-card-title mb-0">{s.titulo}</h4>
                 <span className="service-card-line block mb-0" />
+                {s.profesional && (
+                  <p className="service-card-profesional"><i className="fas fa-user-circle"></i> {s.profesional}</p>
+                )}
                 <p className="service-card-desc">{s.descripcion}</p>
               </div>
             </div>

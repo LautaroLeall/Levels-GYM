@@ -3,7 +3,7 @@ import '../styles/Sedes.css';
 const sedes = [
   {
     nombre: 'Sede YB',
-    img: 'https://images.unsplash.com/photo-1534438327276-14e5300c3a48?auto=format&fit=crop&q=80&w=800',
+    img: '/galeria/yb pro.jpg',
     alt: 'Yerba Buena',
     direccion: 'Av. Aconquija 225 — YB',
     sabados: '10:00 — 14:00',
@@ -13,8 +13,9 @@ const sedes = [
   },
   {
     nombre: 'Sede Centro',
-    img: 'https://images.unsplash.com/photo-1540497077202-7c8a3999166f?auto=format&fit=crop&q=80&w=800',
+    img: '/galeria/galery-1.png',
     alt: 'SMT',
+    imgClass: 'centro-img',
     direccion: 'Jujuy 254 — SMT',
     sabados: '14:00 — 18:00',
     mapsUrl: 'https://maps.google.com/?q=Jujuy+254+San+Miguel+de+Tucuman',
@@ -39,7 +40,7 @@ export default function Sedes() {
               data-aos={sede.aosDirection}
             >
               <div className="sede-img-wrapper relative">
-                <img src={sede.img} alt={sede.alt} />
+                <img src={sede.img} alt={sede.alt} className={sede.imgClass || ''} />
                 <div className={`sede-img-overlay absolute ${sede.overlayClass}`}></div>
                 <div className="sede-img-name absolute">{sede.nombre}</div>
               </div>
