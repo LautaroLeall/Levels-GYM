@@ -11,12 +11,12 @@ const imagenes = [
     alt: 'Equipamiento',
   },
   {
-    src: '/galeria/mancuernas.jpeg',
-    alt: 'Pesas',
+    src: '/galeria/galery-3.jpeg',
+    alt: 'Mancuernas',
   },
   {
-    src: '/galeria/actitud.jpeg',
-    alt: 'Entrenamiento funcional',
+    src: '/galeria/galery-4.jpeg',
+    alt: 'Cartel - Motivacion',
   },
 ];
 
