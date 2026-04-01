@@ -187,11 +187,11 @@
 /* Hover solo desktop */
 @media (hover: hover) and (pointer: fine) {
   .galeria-item:hover img {
-    transform: scale(1.05);
-    filter: brightness(1.1);
+    transform: scale(1.02);
+    filter: brightness(1.05);
   }
 
   .galeria-item:hover::after {
-    opacity: 1;
+    opacity: 0.5;
   }
 }
