@@ -36,7 +36,7 @@ export default function Metodo() {
             El Método <span className="blue-gradient-text">Levels</span>
           </h2>
           <p className="metodo-description">
-            Un enfoque 360° diseñado para atletas profesionales y personas que buscan su mejor versión.
+           Un enfoque 360, con entrenamientos inteligentes según tu objetivo
           </p>
         </div>
 

@@ -44,11 +44,17 @@
 }
 
 .sede-img-overlay.yb {
-  background-color: rgba(30, 58, 138, 0.4);
+  background-color: transparent;
+}
+
+.sede-img-wrapper img.centro-img {
+  object-fit: cover;
+  transform: scale(0.75);
+  transform-origin: center center;
 }
 
 .sede-img-overlay.centro {
-  background-color: rgba(2, 6, 23, 0.4);
+  background-color: transparent;
 }
 
 .sede-img-name {

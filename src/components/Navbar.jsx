@@ -33,9 +33,7 @@ export default function Navbar() {
         <div className="navbar-container flex justify-between items-center">
           {/* Logo */}
           <a href="#inicio" className="navbar-logo flex items-center">
-            <span>Le </span>
-            <img src="/logo-levels.png" alt="Levels Logo" className='relative' />
-            <span>els</span>
+            <span>Levels</span>
           </a>
 
           {/* Links Desktop */}
