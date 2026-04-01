@@ -26,13 +26,13 @@ export default function Footer() {
       <div className="footer-container grid gap-5">
         {/* Logo + Descripción */}
         <div>
-          <div className="footer-logo flex items-center mb-3">
-            <span>Le </span>
-            <img src="/logo-levels.png" alt="Levels Logo" className='img-footer relative' />
-            <span>els</span>
+          <div className="footer-logo mb-3">
+            <a href="#inicio" className="navbar-logo flex items-center">
+              <span>Levels</span>
+            </a>
           </div>
           <p className="footer-brand-desc mb-4">
-            Entrenamiento de élite en Tucumán. Profesionalismo, ciencia y resultados.
+            Entrenamiento de élite en Tucumán.
           </p>
           <div className="footer-social flex gap-3">
             <a href="https://www.instagram.com/levels.ar/" target="_blank" rel="noopener noreferrer" className="glass">
