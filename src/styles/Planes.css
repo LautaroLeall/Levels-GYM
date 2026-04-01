@@ -55,7 +55,8 @@
 
 .peek-slot {
   flex-shrink: 0;
-  width: 85vw; /* Tarjeta mucho mas grande y predominante en mobile */
+  width: 85vw;
+  /* Tarjeta mucho mas grande y predominante en mobile */
   max-width: 24rem;
   transition: opacity 0.35s ease, filter 0.35s ease, transform 0.35s ease;
 }
@@ -222,7 +223,7 @@
 
 /* Precios */
 .plan-precios {
-  margin-bottom: 1.5rem;
+  margin-bottom: 1rem;
 }
 
 .plan-precio-row {
@@ -238,15 +239,17 @@
 }
 
 .plan-price-big.size-xl {
-  font-size: 2.5rem; /* Achicado en mobile */
+  font-size: 2rem;
+  /* Achicado en mobile */
 }
 
 .plan-price-big.size-2xl {
-  font-size: 2.25rem; /* Achicado en mobile */
+  font-size: 2rem;
+  /* Achicado en mobile */
 }
 
 .plan-price-small {
-  font-size: 1.25rem;
+  font-size: 1rem;
   font-weight: 700;
   color: #cbd5e1;
 }
@@ -299,15 +302,18 @@
   align-items: center;
   justify-content: center;
   gap: 0.3rem;
-  padding: 0.75rem 0.2rem; /* Más alto en mobile */
+  padding: 0.75rem 0.2rem;
+  /* Más alto en mobile */
   border: none;
   border-radius: 0.5rem;
   background: transparent;
   color: #64748b;
-  font-size: 0.65rem; /* Más chico en mobile */
+  font-size: 0.65rem;
+  /* Más chico en mobile */
   font-weight: 700;
   text-transform: uppercase;
-  letter-spacing: 0.02em; /* Menos separado para que entre Transferencia */
+  letter-spacing: 0.02em;
+  /* Menos separado para que entre Transferencia */
   cursor: pointer;
   transition: all 0.25s ease;
   font-family: inherit;
@@ -337,9 +343,11 @@
 }
 
 .plan-benefits li {
-  font-size: 0.85rem; /* Achicado en mobile */
+  font-size: 0.85rem;
+  /* Achicado en mobile */
   font-style: italic;
-  margin-bottom: 0.5rem; /* Espaciado achicado en mobile */
+  margin-bottom: 0.5rem;
+  /* Espaciado achicado en mobile */
 }
 
 .plan-benefits li i {
@@ -365,12 +373,14 @@
   display: block;
   width: 100%;
   text-align: center;
-  padding: 0.8rem 1.5rem; /* Achicado en mobile */
+  padding: 0.8rem 1.5rem;
+  /* Achicado en mobile */
   border-radius: 1rem;
   font-weight: 900;
   text-transform: uppercase;
   letter-spacing: 0.15em;
-  font-size: 0.75rem; /* Achicado en mobile */
+  font-size: 0.75rem;
+  /* Achicado en mobile */
   transition: background-color 0.3s;
   cursor: pointer;
   font-family: inherit;
@@ -387,12 +397,19 @@
   }
 
   .planes-carousel-wrapper {
-    max-width: 100%; /* Modificado para que las cards laterales se vean completas */
-    padding: 0.75rem 0 1.25rem; /* Reseteamos padding */
+    max-width: 100%;
+    /* Modificado para que las cards laterales se vean completas */
+    padding: 0.75rem 0 1.25rem;
+    /* Reseteamos padding */
   }
 
-  .plan-price-big.size-xl { font-size: 3.25rem; }
-  .plan-price-big.size-2xl { font-size: 2.75rem; }
+  .plan-price-big.size-xl {
+    font-size: 3.25rem;
+  }
+
+  .plan-price-big.size-2xl {
+    font-size: 2.75rem;
+  }
 
   .plan-benefits li {
     font-size: 1rem;
@@ -413,7 +430,8 @@
   }
 
   .peek-slot {
-    width: 26rem; /* TamaÃ±o original predeterminado */
+    width: 26rem;
+    /* TamaÃ±o original predeterminado */
     max-width: none;
   }
 
