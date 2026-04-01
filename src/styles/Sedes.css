@@ -49,7 +49,6 @@
 
 .sede-img-wrapper img.centro-img {
   object-fit: cover;
-  transform: scale(0.75);
   transform-origin: center center;
 }
 
