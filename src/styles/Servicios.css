@@ -38,7 +38,7 @@
 .carousel-track {
   width: max-content;
   padding: 1.5rem 0 2.5rem;
-  animation: infiniteScroll 50s linear infinite;
+  animation: infiniteScroll 90s linear infinite;
 }
 
 .carousel-track.paused {
@@ -51,7 +51,7 @@
   }
 
   100% {
-    transform: translateX(-50%);
+    transform: translateX(-20%);
   }
 }
 
