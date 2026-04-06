@@ -2,12 +2,12 @@ import '../styles/Hero.css';
 
 export default function Hero() {
   return (
-    <section id="inicio" className="hero bg-levels-deep flex items-center pt-15">
-      <div className="hero-grid grid gap-5 items-center">
+    <section id="inicio" className="hero bg-levels-deep flex items-center pt-20">
+      <div className="hero-grid grid gap-10 items-center">
         {/* Texto */}
         <div>
           <span className="hero-badge inline-block mb-8">
-            Centro de alto rendimiento 
+            Centro de alto rendimiento
           </span>
           <h1 className="hero-title mb-3">
             TÚ <span className="blue-gradient-text">NIVEL</span>
