@@ -3,7 +3,7 @@ import '../styles/Sedes.css';
 const sedes = [
   {
     nombre: 'Sede YB',
-    img: '/galeria/yb pro.jpg',
+    img: '/sedes/yb.jpg',
     alt: 'Yerba Buena',
     direccion: 'Av. Aconquija 225 — YB',
     sabados: '10:00 — 14:00',
@@ -13,7 +13,7 @@ const sedes = [
   },
   {
     nombre: 'Sede Centro',
-    img: '/galeria/galery-1.png',
+    img: '/sedes/centro.jpg',
     alt: 'SMT',
     imgClass: 'centro-img',
     direccion: 'Jujuy 254 — SMT',
