@@ -1,12 +1,9 @@
 .hero {
-  position: relative;
-  min-height: 100vh;
-  min-height: 100dvh;
+  height: 100vh;
   overflow: hidden;
 }
 
 .hero-grid {
-  max-width: 80rem;
   margin: 0 auto;
   padding: 0 1.5rem;
   position: relative;
@@ -28,14 +25,14 @@
 
 /* Título */
 .hero-title {
-  font-size: 3rem;
+  font-size: 2.9rem;
   font-weight: 900;
   line-height: 1;
   color: #ffffff;
 }
 
 .hero-subtitle {
-  font-size: 1rem;
+  font-size: 0.9rem;
   color: #94a3b8;
   max-width: 32rem;
   line-height: 1.75;
@@ -73,7 +70,7 @@
 }
 
 .hero-community-text {
-  font-size: 0.875rem;
+  font-size: 0.8rem;
   color: #94a3b8;
   font-weight: 700;
   text-transform: uppercase;
@@ -92,8 +89,8 @@
 
 .hero-logo-box {
   position: relative;
-  width: 15rem;
-  height: 15rem;
+  width: 12rem;
+  height: 12rem;
   border-radius: 50%;
   box-shadow: 0 0 100px rgba(37, 99, 235, 0.4);
   transform: rotate(3deg);
@@ -210,8 +207,8 @@
   }
 
   .hero-logo-box {
-    width: 28rem;
-    height: 28rem;
+    width: 25rem;
+    height: 25rem;
   }
 }
 
