@@ -32,10 +32,10 @@ export default function Inscripcion() {
     const { name, value } = e.target;
     if (name === 'membresia') {
       const soloEfectivo = value === 'Plan Trimestral' || value === 'Plan 6 Meses';
-      setFormData(prev => ({ 
-        ...prev, 
+      setFormData(prev => ({
+        ...prev,
         [name]: value,
-        metodoPago: soloEfectivo ? 'Efectivo' : prev.metodoPago 
+        metodoPago: soloEfectivo ? 'Efectivo' : prev.metodoPago
       }));
     } else {
       setFormData(prev => ({ ...prev, [name]: value }));
@@ -129,14 +129,17 @@ export default function Inscripcion() {
 
             <div className="inscripcion-field">
               <label className="mb-2 block">Método de Pago</label>
-              
+
               {esSoloEfectivo ? (
+
                 <div className="inscripcion-metodo-toggle" style={{ opacity: 0.9, pointerEvents: 'none' }}>
                   <button type="button" className="inscripcion-metodo-btn active w-full" style={{ flex: 1 }}>
                     <i className="fas fa-money-bill-wave"></i> Efectivo
                   </button>
                 </div>
+
               ) : (
+
                 <div className="inscripcion-metodo-toggle">
                   <button
                     type="button"
