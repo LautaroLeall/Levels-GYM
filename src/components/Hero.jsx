@@ -2,7 +2,7 @@ import '../styles/Hero.css';
 
 export default function Hero() {
   return (
-    <section id="inicio" className="hero bg-levels-deep flex items-center pt-20">
+    <section id="inicio" className="hero bg-levels-deep flex items-center pt-22">
       <div className="hero-grid grid gap-10 items-center">
         {/* Texto */}
         <div>
