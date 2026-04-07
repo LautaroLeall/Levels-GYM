@@ -79,9 +79,17 @@
   transition: width 0.3s ease;
 }
 
-.navbar-hamburger span:nth-child(1) { width: 100%; }
-.navbar-hamburger span:nth-child(2) { width: 70%; }
-.navbar-hamburger span:nth-child(3) { width: 85%; }
+.navbar-hamburger span:nth-child(1) {
+  width: 100%;
+}
+
+.navbar-hamburger span:nth-child(2) {
+  width: 70%;
+}
+
+.navbar-hamburger span:nth-child(3) {
+  width: 85%;
+}
 
 /* Overlay oscuro detrás del drawer */
 .mobile-overlay {
@@ -96,8 +104,25 @@
   animation: fadeOut 0.3s ease forwards;
 }
 
-@keyframes fadeIn  { from { opacity: 0; } to { opacity: 1; } }
-@keyframes fadeOut { from { opacity: 1; } to { opacity: 0; } }
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes fadeOut {
+  from {
+    opacity: 1;
+  }
+
+  to {
+    opacity: 0;
+  }
+}
 
 /* Mobile Menu — drawer lateral derecho */
 .mobile-menu {
@@ -124,13 +149,27 @@
 }
 
 @keyframes slideInRight {
-  from { transform: translateX(100%); opacity: 0.5; }
-  to   { transform: translateX(0);    opacity: 1; }
+  from {
+    transform: translateX(100%);
+    opacity: 0.5;
+  }
+
+  to {
+    transform: translateX(0);
+    opacity: 1;
+  }
 }
 
 @keyframes slideOutRight {
-  from { transform: translateX(0);    opacity: 1; }
-  to   { transform: translateX(100%); opacity: 0; }
+  from {
+    transform: translateX(0);
+    opacity: 1;
+  }
+
+  to {
+    transform: translateX(100%);
+    opacity: 0;
+  }
 }
 
 .mobile-menu a {
@@ -169,8 +208,8 @@
   right: 1.5rem;
   width: 2rem;
   height: 2rem;
-  background: rgba(255,255,255,0.06);
-  border: 1px solid rgba(255,255,255,0.1);
+  background: rgba(255, 255, 255, 0.06);
+  border: 1px solid rgba(255, 255, 255, 0.1);
   border-radius: 0.5rem;
   color: #94a3b8;
   font-size: 1.1rem;
