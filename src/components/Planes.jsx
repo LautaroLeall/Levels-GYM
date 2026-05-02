@@ -6,8 +6,8 @@ const planes = [
     nombre: 'Mensual',
     subtitulo: 'Ideal para empezar tu camino.',
     precios: [
-      { monto: '$46.000', metodo: 'Efectivo', sizeClass: 'size-2xl' },
-      { monto: '$48.000', metodo: 'Transferencia', small: true },
+      { monto: '$48.000', metodo: 'Efectivo', sizeClass: 'size-2xl' },
+      { monto: '$50.000', metodo: 'Transferencia', small: true },
     ],
     cuotas: null,
     beneficios: [
@@ -22,7 +22,7 @@ const planes = [
     nombre: 'Trimestral',
     subtitulo: 'Compromiso real con tus resultados.',
     precios: [
-      { monto: '$125.000', metodo: 'Efectivo', sizeClass: 'size-2xl' },
+      { monto: '$130.000', metodo: 'Efectivo', sizeClass: 'size-2xl' },
     ],
     cuotas: null,
     beneficios: [
@@ -37,9 +37,9 @@ const planes = [
     nombre: 'Semestral',
     subtitulo: 'Transformación total garantizada.',
     precios: [
-      { monto: '$252.000', metodo: 'Efectivo', sizeClass: 'size-2xl' },
+      { monto: '$258.000', metodo: 'Efectivo', sizeClass: 'size-2xl' },
     ],
-    cuotas: '3 Cuotas de $84.000',
+    cuotas: '3 Cuotas de $86.000',
     beneficios: [
       'Planificación personalizada según tus objetivos',
       'Evaluación tecnológica de fuerza y potencia',
@@ -54,16 +54,10 @@ const planes = [
     subtitulo: 'El compromiso máximo, el mejor precio.',
     precios: [
       {
-        monto: '$480.000',
+        monto: '$495.000',
         metodo: 'Efectivo',
         sizeClass: 'size-2xl',
-        cuotas: '3 Cuotas de $160.000'
-      },
-      {
-        monto: '$510.000',
-        metodo: 'Transferencia',
-        small: true,
-        cuotas: '3 Cuotas de $170.000'
+        cuotas: '3 Cuotas de $165.000'
       },
     ],
     cuotas: null,
