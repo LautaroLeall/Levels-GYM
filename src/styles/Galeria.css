@@ -104,18 +104,9 @@
 }
 
 /* Mobile Default */
-.galeria-grid {
-  display: flex;
-  flex-direction: column;
-  gap: 1.5rem;
-  margin-top: 2rem;
-}
-
 .galeria-item {
   border-radius: 1.5rem;
-  position: relative;
   overflow: hidden;
-  display: flex;
   width: 100%;
 }
 
