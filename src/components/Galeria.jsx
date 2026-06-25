@@ -45,14 +45,15 @@ export default function Galeria() {
             Nuestras <span className="blue-gradient-text">Instalaciones</span>
           </h2>
           <p className="galeria-header-desc">
-            Equipamiento profesional de vanguardia.</p>
+            Equipamiento profesional de vanguardia.
+          </p>
         </div>
 
-        <div className="galeria-grid">
+        <div className="galeria-grid flex flex-col gap-5 mt-8">
           {imagenes.map((img, i) => (
             <div
               key={img.alt}
-              className={`galeria-item galeria-item-${i + 1}`}
+              className={`galeria-item relative flex galeria-item-${i + 1}`}
             >
               <img src={img.src} alt={img.alt} />
             </div>
