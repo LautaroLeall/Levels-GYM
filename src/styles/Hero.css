@@ -6,7 +6,6 @@
 .hero-grid {
   margin: 0 auto;
   padding: 0 1.5rem;
-  position: relative;
   z-index: 10;
 }
 
@@ -79,16 +78,11 @@
 }
 
 /* Logo animado */
-.hero-logo-container {
-  position: relative;
-}
-
 .float-logo {
   animation: float 4s ease-in-out infinite;
 }
 
 .hero-logo-box {
-  position: relative;
   width: 12rem;
   height: 12rem;
   border-radius: 50%;
@@ -107,14 +101,12 @@
 }
 
 .hero-logo-overlay {
-  position: absolute;
   inset: 0;
   background: linear-gradient(to bottom right, #2563eb, #1e40af);
   opacity: 0.1;
 }
 
 .hero-logo-blur {
-  position: absolute;
   bottom: -2.5rem;
   left: -2.5rem;
   width: 10rem;
