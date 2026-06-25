@@ -107,12 +107,18 @@ export default function Servicios() {
                 <div className={`flex items-center justify-center mb-5 service-card-icon ${s.iconoClass}`}>
                   <i className={`fas ${s.icono}`} />
                 </div>
-                <h4 className="service-card-title mb-0">{s.titulo}</h4>
+                <h4 className="service-card-title mb-0">
+                  {s.titulo}
+                </h4>
                 <span className="service-card-line block mb-0" />
                 {s.profesional && (
-                  <p className="service-card-profesional"><i className="fas fa-user-circle"></i> {s.profesional}</p>
+                  <p className="service-card-profesional mb-2">
+                    <i className="fas fa-user-circle"></i> {s.profesional}
+                  </p>
                 )}
-                <p className="service-card-desc">{s.descripcion}</p>
+                <p className="service-card-desc">
+                  {s.descripcion}
+                </p>
               </div>
             </div>
           ))}
