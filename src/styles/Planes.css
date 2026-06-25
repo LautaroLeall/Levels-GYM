@@ -38,19 +38,11 @@
 
 /* Carrusel con peek */
 .planes-carousel-wrapper {
-  position: relative;
   overflow: hidden;
   max-width: 100vw;
   margin: 0 auto;
   /* Espacio extra arriba para las flechas en mobile */
   padding: 3.5rem 0 1.25rem;
-}
-
-.planes-track {
-  display: flex;
-  gap: 1.25rem;
-  align-items: stretch;
-  justify-content: center;
 }
 
 .peek-slot {
@@ -67,7 +59,6 @@
   cursor: pointer;
 }
 
-/* Disable interactions inside side cards, so they only serve to center themselves on click */
 .peek-slot.peek-side * {
   pointer-events: none;
 }
@@ -145,13 +136,6 @@
 }
 
 /* Dots */
-.carousel-dots {
-  display: flex;
-  justify-content: center;
-  gap: 0.5rem;
-  margin-top: 1.5rem;
-}
-
 .carousel-dot {
   width: 0.5rem;
   height: 0.5rem;
@@ -172,8 +156,6 @@
 .plan-card {
   border-radius: 1.5rem;
   padding: 2rem 2rem;
-  display: flex;
-  flex-direction: column;
   height: 34rem;
   transition: all 0.5s;
 }
@@ -189,20 +171,6 @@
   overflow: hidden;
   z-index: 10;
   box-shadow: 0 25px 50px rgba(30, 64, 175, 0.2);
-}
-
-/* Badge */
-.plan-badge {
-  top: 0;
-  right: 0;
-  background-color: #2563eb;
-  color: #ffffff;
-  font-size: 10px;
-  font-weight: 900;
-  padding: 0.5rem 1.5rem;
-  text-transform: uppercase;
-  letter-spacing: 0.15em;
-  border-bottom-left-radius: 1rem;
 }
 
 .plan-name {
@@ -222,17 +190,6 @@
 }
 
 /* Precios */
-.plan-precios {
-  margin-bottom: 1rem;
-}
-
-.plan-precio-row {
-  display: flex;
-  align-items: baseline;
-  gap: 0.4rem;
-  margin-bottom: 0.35rem;
-}
-
 .plan-price-big {
   font-weight: 900;
   color: #ffffff;
@@ -248,27 +205,12 @@
   /* Achicado en mobile */
 }
 
-.plan-price-small {
-  font-size: 1rem;
-  font-weight: 700;
-  color: #cbd5e1;
-}
-
 .plan-price-label {
   color: #64748b;
   font-size: 1rem;
   text-transform: uppercase;
   font-weight: 700;
   font-style: italic;
-}
-
-.plan-note {
-  color: #93c5fd;
-  font-size: 0.75rem;
-  font-weight: 700;
-  text-transform: uppercase;
-  font-style: italic;
-  margin-top: 0.25rem;
 }
 
 .plan-cuota-badge {
@@ -285,7 +227,7 @@
   font-style: italic;
 }
 
-/* Toggle mÃ©todo de pago */
+/* Toggle método de pago */
 .plan-metodo-toggle {
   display: flex;
   background: rgba(255, 255, 255, 0.05);
@@ -357,10 +299,6 @@
 
 .plan-benefits.light li {
   color: #e2e8f0;
-}
-
-.plan-benefits.muted li {
-  color: #94a3b8;
 }
 
 .plan-benefits.compact li {
@@ -458,149 +396,7 @@
     border-color: rgba(59, 130, 246, 0.5);
   }
 
-  .plan-cta.outline:hover,
   .plan-cta.filled:hover {
     background-color: #3b82f6;
   }
-}
-
-/* Modal transferencia */
-.transfer-modal-backdrop {
-  position: fixed;
-  inset: 0;
-  background: rgba(0, 0, 0, 0.75);
-  backdrop-filter: blur(6px);
-  z-index: 1000;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  padding: 1rem;
-}
-
-.transfer-modal {
-  position: relative;
-  background: #0f172a;
-  border: 1px solid rgba(37, 99, 235, 0.4);
-  border-radius: 1.5rem;
-  padding: 2.5rem 2rem;
-  width: 100%;
-  max-width: 26rem;
-  box-shadow: 0 30px 60px rgba(0, 0, 0, 0.6);
-  display: flex;
-  flex-direction: column;
-  gap: 1rem;
-}
-
-.transfer-modal-close {
-  position: absolute;
-  top: 1rem;
-  right: 1rem;
-  background: rgba(255, 255, 255, 0.07);
-  border: none;
-  color: #94a3b8;
-  width: 2rem;
-  height: 2rem;
-  border-radius: 50%;
-  cursor: pointer;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 0.8rem;
-  transition: background 0.2s;
-}
-
-.transfer-modal-close:hover {
-  background: rgba(255, 255, 255, 0.15);
-  color: #fff;
-}
-
-.transfer-modal-title {
-  font-size: 1.2rem;
-  font-weight: 800;
-  color: #ffffff;
-  text-transform: uppercase;
-  letter-spacing: 0.05em;
-  display: flex;
-  align-items: center;
-  gap: 0.6rem;
-}
-
-.transfer-modal-title i {
-  color: #2563eb;
-}
-
-.transfer-modal-plan {
-  color: #94a3b8;
-  font-size: 0.9rem;
-}
-
-.transfer-modal-plan strong {
-  color: #ffffff;
-}
-
-.transfer-alias-list {
-  display: flex;
-  flex-direction: column;
-  gap: 0.75rem;
-  margin: 0.25rem 0;
-}
-
-.transfer-alias-card {
-  background: rgba(37, 99, 235, 0.1);
-  border: 1px solid rgba(37, 99, 235, 0.3);
-  border-radius: 1rem;
-  padding: 0.9rem 1.25rem;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-}
-
-.transfer-alias-sede {
-  color: #94a3b8;
-  font-size: 0.8rem;
-  text-transform: uppercase;
-  font-weight: 700;
-  letter-spacing: 0.07em;
-}
-
-.transfer-alias-value {
-  font-size: 1.1rem;
-  font-weight: 900;
-  color: #93c5fd;
-  letter-spacing: 0.04em;
-}
-
-.transfer-modal-instruccion {
-  color: #64748b;
-  font-size: 0.8rem;
-  font-style: italic;
-  line-height: 1.5;
-}
-
-.transfer-wsp-btn {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 0.6rem;
-  width: 100%;
-  padding: 0.9rem 1rem;
-  background: #25d366;
-  color: #ffffff;
-  border: none;
-  border-radius: 1rem;
-  font-weight: 900;
-  font-size: 0.875rem;
-  text-transform: uppercase;
-  letter-spacing: 0.1em;
-  cursor: pointer;
-  font-family: inherit;
-  transition: background 0.2s;
-}
-
-.transfer-wsp-btn i {
-  font-size: 1.1rem;
-}
-
-.transfer-wsp-btn:hover {
-  background: #1ebe5d;
 }
