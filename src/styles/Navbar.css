@@ -59,10 +59,6 @@
 
 /* Hamburger */
 .navbar-hamburger {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  gap: 5px;
   width: 2rem;
   height: 2rem;
   background: none;
@@ -93,7 +89,6 @@
 
 /* Overlay oscuro detrás del drawer */
 .mobile-overlay {
-  position: fixed;
   inset: 0;
   background: rgba(0, 0, 0, 0.45);
   z-index: 140;
@@ -126,7 +121,6 @@
 
 /* Mobile Menu — drawer lateral derecho */
 .mobile-menu {
-  position: fixed;
   top: 0;
   right: 0;
   height: 100vh;
@@ -203,7 +197,6 @@
 }
 
 .mobile-menu .close-btn {
-  position: absolute;
   top: 1.5rem;
   right: 1.5rem;
   width: 2rem;
@@ -214,9 +207,6 @@
   color: #94a3b8;
   font-size: 1.1rem;
   cursor: pointer;
-  display: flex;
-  align-items: center;
-  justify-content: center;
   line-height: 1;
   transition: background 0.2s;
 }
