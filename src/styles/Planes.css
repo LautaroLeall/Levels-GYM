@@ -141,7 +141,9 @@
   height: 0.5rem;
   border-radius: 9999px;
   background: rgba(255, 255, 255, 0.2);
-  border: none;
+  border: 10px solid transparent;
+  background-clip: padding-box;
+  box-sizing: content-box;
   cursor: pointer;
   padding: 0;
   transition: background 0.25s, width 0.25s;
@@ -206,7 +208,7 @@
 }
 
 .plan-price-label {
-  color: #64748b;
+  color: #94a3b8;
   font-size: 1rem;
   text-transform: uppercase;
   font-weight: 700;
@@ -249,7 +251,7 @@
   border: none;
   border-radius: 0.5rem;
   background: transparent;
-  color: #64748b;
+  color: #94a3b8;
   font-size: 0.65rem;
   /* Más chico en mobile */
   font-weight: 700;
