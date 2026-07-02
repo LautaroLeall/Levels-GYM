@@ -28,14 +28,16 @@ export default function App() {
   return (
     <div className="overflow-x-hidden">
       <Navbar />
-      <Hero />
-      <Metodo />
-      <Servicios />
-      <Horarios />
-      <Planes />
-      <Sedes />
-      <Galeria />
-      <Inscripcion />
+      <main>
+        <Hero />
+        <Metodo />
+        <Servicios />
+        <Horarios />
+        <Planes />
+        <Sedes />
+        <Galeria />
+        <Inscripcion />
+      </main>
       <Footer />
 
       <SocialSidebar />

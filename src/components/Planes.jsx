@@ -91,7 +91,7 @@ function PlanCard({ plan }) {
 
   return (
     <div className={`plan-card flex flex-col glass ${plan.popular ? 'popular' : 'normal'}`}>
-      <h4 className="plan-name">{plan.nombre}</h4>
+      <h3 className="plan-name">{plan.nombre}</h3>
       <p className="plan-desc">{plan.subtitulo}</p>
 
       {plan.precios.length > 1 ? (
