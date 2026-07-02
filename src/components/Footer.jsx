@@ -35,10 +35,10 @@ export default function Footer() {
             Entrenamiento de élite en Tucumán.
           </p>
           <div className="footer-social flex gap-3">
-            <a href="https://www.instagram.com/levels.ar/" target="_blank" rel="noopener noreferrer" className="glass">
+            <a href="https://www.instagram.com/levels.ar/" target="_blank" rel="noopener noreferrer" className="glass" aria-label="Instagram">
               <i className="fab fa-instagram"></i>
             </a>
-            <a href="https://wa.me/5493815191501" target="_blank" rel="noopener noreferrer" className="glass">
+            <a href="https://wa.me/5493815191501" target="_blank" rel="noopener noreferrer" className="glass" aria-label="WhatsApp">
               <i className="fab fa-whatsapp"></i>
             </a>
           </div>
