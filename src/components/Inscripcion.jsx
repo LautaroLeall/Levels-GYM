@@ -113,13 +113,13 @@ export default function Inscripcion() {
                 required
               >
                 <option value="Plan Mensual">
-                  Plan Mensual ($46.000 efectivo / $48.000 transferencia)
+                  Plan Mensual ($52.000 efectivo / $54.000 transferencia)
                 </option>
                 <option value="Plan Trimestral">
-                  Plan Trimestral ($125.000 efectivo)
+                  Plan Trimestral ($142.000 efectivo)
                 </option>
                 <option value="Plan 6 Meses">
-                  Plan 6 Meses ($252.000 efectivo)
+                  Plan 6 Meses ($276.000 efectivo - 3 cuotas de $92.000)
                 </option>
                 <option value="Plan Anual">
                   Plan Anual ($480.000 efectivo / $510.000 transferencia)
