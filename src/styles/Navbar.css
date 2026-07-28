@@ -59,10 +59,6 @@
 
 /* Hamburger */
 .navbar-hamburger {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  gap: 5px;
   width: 2rem;
   height: 2rem;
   background: none;
@@ -79,13 +75,20 @@
   transition: width 0.3s ease;
 }
 
-.navbar-hamburger span:nth-child(1) { width: 100%; }
-.navbar-hamburger span:nth-child(2) { width: 70%; }
-.navbar-hamburger span:nth-child(3) { width: 85%; }
+.navbar-hamburger span:nth-child(1) {
+  width: 100%;
+}
+
+.navbar-hamburger span:nth-child(2) {
+  width: 70%;
+}
+
+.navbar-hamburger span:nth-child(3) {
+  width: 85%;
+}
 
 /* Overlay oscuro detrás del drawer */
 .mobile-overlay {
-  position: fixed;
   inset: 0;
   background: rgba(0, 0, 0, 0.45);
   z-index: 140;
@@ -96,12 +99,28 @@
   animation: fadeOut 0.3s ease forwards;
 }
 
-@keyframes fadeIn  { from { opacity: 0; } to { opacity: 1; } }
-@keyframes fadeOut { from { opacity: 1; } to { opacity: 0; } }
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes fadeOut {
+  from {
+    opacity: 1;
+  }
+
+  to {
+    opacity: 0;
+  }
+}
 
 /* Mobile Menu — drawer lateral derecho */
 .mobile-menu {
-  position: fixed;
   top: 0;
   right: 0;
   height: 100vh;
@@ -124,13 +143,27 @@
 }
 
 @keyframes slideInRight {
-  from { transform: translateX(100%); opacity: 0.5; }
-  to   { transform: translateX(0);    opacity: 1; }
+  from {
+    transform: translateX(100%);
+    opacity: 0.5;
+  }
+
+  to {
+    transform: translateX(0);
+    opacity: 1;
+  }
 }
 
 @keyframes slideOutRight {
-  from { transform: translateX(0);    opacity: 1; }
-  to   { transform: translateX(100%); opacity: 0; }
+  from {
+    transform: translateX(0);
+    opacity: 1;
+  }
+
+  to {
+    transform: translateX(100%);
+    opacity: 0;
+  }
 }
 
 .mobile-menu a {
@@ -164,20 +197,16 @@
 }
 
 .mobile-menu .close-btn {
-  position: absolute;
   top: 1.5rem;
   right: 1.5rem;
   width: 2rem;
   height: 2rem;
-  background: rgba(255,255,255,0.06);
-  border: 1px solid rgba(255,255,255,0.1);
+  background: rgba(255, 255, 255, 0.06);
+  border: 1px solid rgba(255, 255, 255, 0.1);
   border-radius: 0.5rem;
   color: #94a3b8;
   font-size: 1.1rem;
   cursor: pointer;
-  display: flex;
-  align-items: center;
-  justify-content: center;
   line-height: 1;
   transition: background 0.2s;
 }

@@ -56,7 +56,7 @@ export default function Navbar() {
           </div>
 
           {/* Hamburguesa */}
-          <button onClick={openMenu} className="navbar-hamburger" aria-label="Abrir menú">
+          <button onClick={openMenu} className="navbar-hamburger flex flex-col justify-center gap-2" aria-label="Abrir menú">
             <span></span>
             <span></span>
             <span></span>
@@ -67,7 +67,7 @@ export default function Navbar() {
       {/* Overlay */}
       {menuOpen && (
         <div
-          className={`mobile-overlay ${closing ? 'closing' : ''}`}
+          className={`mobile-overlay fixed ${closing ? 'closing' : ''}`}
           onClick={closeMenu}
         />
       )}
@@ -75,7 +75,7 @@ export default function Navbar() {
       {/* Menú Móvil */}
       {menuOpen && (
         <div className={`mobile-menu fixed flex flex-col justify-center items-center gap-10 ${closing ? 'closing' : ''}`}>
-          <button onClick={closeMenu} className="close-btn absolute" aria-label="Cerrar menú">
+          <button onClick={closeMenu} className="close-btn absolute flex items-center justify-center" aria-label="Cerrar menú">
             &times;
           </button>
           {navLinks.map((link) => (
@@ -85,7 +85,7 @@ export default function Navbar() {
           ))}
           <a
             href="#inscripcion"
-            className="cta-mobile"
+            className="cta-mobile text-center"
             onClick={closeMenu}
           >
             Unirme Ahora

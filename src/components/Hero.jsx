@@ -2,8 +2,8 @@ import '../styles/Hero.css';
 
 export default function Hero() {
   return (
-    <section id="inicio" className="hero bg-levels-deep flex items-center pt-20">
-      <div className="hero-grid grid gap-10 items-center">
+    <section id="inicio" className="hero bg-levels-deep flex items-center pt-22">
+      <div className="hero-grid relative grid gap-10 items-center">
         {/* Texto */}
         <div>
           <span className="hero-badge inline-block mb-8">
@@ -34,12 +34,12 @@ export default function Hero() {
         </div>
 
         {/* Logo Animado */}
-        <div className="hero-logo-container flex items-center justify-center">
-          <div className="hero-logo-box float-logo flex items-center justify-center">
+        <div className="hero-logo-container relative flex items-center justify-center">
+          <div className="hero-logo-box float-logo relative flex items-center justify-center">
             <div className="hero-logo-overlay"></div>
             <img src="/logo-levels_hero.png" alt="Levels Logo" />
           </div>
-          <div className="hero-logo-blur"></div>
+          <div className="hero-logo-blur absolute" />
         </div>
       </div>
     </section>

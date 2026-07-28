@@ -26,19 +26,4 @@ body {
   backdrop-filter: blur(12px);
   border: 1px solid rgba(255, 255, 255, 0.08);
 }
-
-@media (hover: hover) and (pointer: fine) {
-  .service-card:hover {
-    transform: translateY(-10px) scale(1.02);
-    box-shadow: 0 20px 40px rgba(37, 99, 235, 0.2);
-    border-color: rgba(59, 130, 246, 0.5);
-  }
-
-  .service-card:hover img {
-    transform: scale(1.15);
-  }
-
-  .service-card:hover::after {
-    opacity: 0.6;
-  }
-}
+

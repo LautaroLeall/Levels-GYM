@@ -6,8 +6,8 @@ const planes = [
     nombre: 'Mensual',
     subtitulo: 'Ideal para empezar tu camino.',
     precios: [
-      { monto: '$52.000', metodo: 'Efectivo', sizeClass: 'size-2xl' },
-      { monto: '$54.000', metodo: 'Transferencia', small: true },
+      { monto: '$50.000', metodo: 'Efectivo', sizeClass: 'size-2xl' },
+      { monto: '$52.000', metodo: 'Transferencia' },
     ],
     cuotas: null,
     beneficios: [
@@ -22,7 +22,7 @@ const planes = [
     nombre: 'Trimestral',
     subtitulo: 'Compromiso real con tus resultados.',
     precios: [
-      { monto: '$142.000', metodo: 'Efectivo', sizeClass: 'size-2xl' },
+      { monto: '$136.000', metodo: 'Efectivo', sizeClass: 'size-2xl' },
     ],
     cuotas: null,
     beneficios: [
@@ -37,9 +37,9 @@ const planes = [
     nombre: 'Semestral',
     subtitulo: 'Transformación total garantizada.',
     precios: [
-      { monto: '$276.000', metodo: 'Efectivo', sizeClass: 'size-2xl' },
+      { monto: '$264.000', metodo: 'Efectivo', sizeClass: 'size-2xl' },
     ],
-    cuotas: '3 Cuotas de $92.000',
+    cuotas: '3 Cuotas de $88.000',
     beneficios: [
       'Planificación personalizada según tus objetivos',
       'Evaluación tecnológica de fuerza y potencia',
@@ -54,10 +54,10 @@ const planes = [
     subtitulo: 'El compromiso máximo, el mejor precio.',
     precios: [
       {
-        monto: '$495.000',
+        monto: '$507.000 ',
         metodo: 'Efectivo',
         sizeClass: 'size-2xl',
-        cuotas: '3 Cuotas de $165.000'
+        cuotas: '3 Cuotas de $169.000'
       },
     ],
     cuotas: null,
@@ -90,8 +90,8 @@ function PlanCard({ plan }) {
   };
 
   return (
-    <div className={`plan-card glass ${plan.popular ? 'popular' : 'normal'}`}>
-      <h4 className="plan-name">{plan.nombre}</h4>
+    <div className={`plan-card flex flex-col glass ${plan.popular ? 'popular' : 'normal'}`}>
+      <h3 className="plan-name">{plan.nombre}</h3>
       <p className="plan-desc">{plan.subtitulo}</p>
 
       {plan.precios.length > 1 ? (
@@ -117,8 +117,8 @@ function PlanCard({ plan }) {
         </div>
       )}
 
-      <div className="plan-precios">
-        <div className="plan-precio-row">
+      <div className="plan-precios mb-4">
+        <div className="plan-precio-row flex items-baseline gap-1.5 mt-0.5">
           <span className={`plan-price-big ${precio.sizeClass || 'size-2xl'}`}>{precio.monto}</span>
           <span className="plan-price-label">/ {plan.nombre === 'Mensual' ? 'mes' : 'total'}</span>
         </div>
@@ -179,7 +179,7 @@ export default function Planes() {
           </p>
         </div>
 
-        <div className="planes-carousel-wrapper">
+        <div className="planes-carousel-wrapper relative">
           <button
             className="carousel-arrow arrow-left"
             onClick={() => goTo(prevIdx, 'right')}
@@ -189,7 +189,7 @@ export default function Planes() {
             <i className="fas fa-chevron-left"></i>
           </button>
 
-          <div className="planes-track">
+          <div className="planes-track flex items-stretch justify-center gap-5">
             <div className="peek-slot peek-side">
               <PlanCard plan={planes[prevIdx]} />
             </div>
@@ -211,7 +211,7 @@ export default function Planes() {
           </button>
         </div>
 
-        <div className="carousel-dots">
+        <div className="carousel-dots flex justify-center mt-6 gap-2">
           {planes.map((p, i) => (
             <button
               key={p.nombre}

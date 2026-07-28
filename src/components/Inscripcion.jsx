@@ -32,10 +32,10 @@ export default function Inscripcion() {
     const { name, value } = e.target;
     if (name === 'membresia') {
       const soloEfectivo = value === 'Plan Trimestral' || value === 'Plan 6 Meses';
-      setFormData(prev => ({ 
-        ...prev, 
+      setFormData(prev => ({
+        ...prev,
         [name]: value,
-        metodoPago: soloEfectivo ? 'Efectivo' : prev.metodoPago 
+        metodoPago: soloEfectivo ? 'Efectivo' : prev.metodoPago
       }));
     } else {
       setFormData(prev => ({ ...prev, [name]: value }));
@@ -81,8 +81,9 @@ export default function Inscripcion() {
           <form className="inscripcion-form flex flex-col gap-4" onSubmit={handleSubmit}>
             <div className="inscripcion-form-row grid gap-4">
               <div className="inscripcion-field">
-                <label className="mb-2 block">Nombre Completo</label>
+                <label htmlFor="form-nombre" className="mb-2 block">Nombre Completo</label>
                 <input
+                  id="form-nombre"
                   type="text"
                   name="nombre"
                   value={formData.nombre}
@@ -92,8 +93,9 @@ export default function Inscripcion() {
                 />
               </div>
               <div className="inscripcion-field">
-                <label className="mb-2 block">WhatsApp</label>
+                <label htmlFor="form-whatsapp" className="mb-2 block">WhatsApp</label>
                 <input
+                  id="form-whatsapp"
                   type="tel"
                   name="whatsapp"
                   value={formData.whatsapp}
@@ -105,8 +107,9 @@ export default function Inscripcion() {
             </div>
 
             <div className="inscripcion-field">
-              <label className="mb-2 block">Membresía Elegida</label>
+              <label htmlFor="form-membresia" className="mb-2 block">Membresía Elegida</label>
               <select
+                id="form-membresia"
                 name="membresia"
                 value={formData.membresia}
                 onChange={handleChange}
@@ -129,14 +132,17 @@ export default function Inscripcion() {
 
             <div className="inscripcion-field">
               <label className="mb-2 block">Método de Pago</label>
-              
+
               {esSoloEfectivo ? (
+
                 <div className="inscripcion-metodo-toggle" style={{ opacity: 0.9, pointerEvents: 'none' }}>
                   <button type="button" className="inscripcion-metodo-btn active w-full" style={{ flex: 1 }}>
                     <i className="fas fa-money-bill-wave"></i> Efectivo
                   </button>
                 </div>
+
               ) : (
+
                 <div className="inscripcion-metodo-toggle">
                   <button
                     type="button"
@@ -178,8 +184,9 @@ export default function Inscripcion() {
             </div>
 
             <div className="inscripcion-field">
-              <label className="mb-2 block">Mensaje Adicional (opcional)</label>
+              <label htmlFor="form-objetivo" className="mb-2 block">Mensaje Adicional (opcional)</label>
               <textarea
+                id="form-objetivo"
                 name="objetivo"
                 value={formData.objetivo}
                 onChange={handleChange}
