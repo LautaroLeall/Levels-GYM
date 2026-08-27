@@ -1,13 +1,16 @@
-import '../styles/Hero.css';
+import "../styles/Hero.css";
 
 export default function Hero() {
   return (
-    <section id="inicio" className="hero bg-levels-deep flex items-center pt-22">
+    <section
+      id="inicio"
+      className="hero bg-levels-deep flex items-center pt-22"
+    >
       <div className="hero-grid relative grid gap-10 items-center">
         {/* Texto */}
         <div>
           <span className="hero-badge inline-block mb-8">
-            Centro de alto rendimiento
+            Un Gimnasio Diferente
           </span>
           <h1 className="hero-title mb-3">
             TÚ <span className="blue-gradient-text">NIVEL</span>
@@ -15,7 +18,7 @@ export default function Hero() {
             SUPERIOR
           </h1>
           <p className="hero-subtitle mb-5">
-            &ldquo;No es solo un gimnasio. Es donde llevás tu rendimiento al siguiente nivel.&rdquo;
+            &ldquo;Nos adaptamos a vos, para que cumplas tus objetivos.&rdquo;
           </p>
           <div className="hero-cta-group flex flex-wrap gap-7">
             <a href="#planes" className="hero-cta-btn flex items-center gap-2">
