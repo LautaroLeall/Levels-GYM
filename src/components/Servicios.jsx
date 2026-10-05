@@ -1,72 +1,48 @@
-import { useRef, useState } from 'react';
+import { useRef, useState, useEffect } from 'react';
 import '../styles/Servicios.css';
-
-const serviciosBase = [
-  {
-    img: './carrousel/entrenamiento-adaptivo.png',
-    alt: 'Entrenamiento',
-    icono: 'fa-dumbbell',
-    iconoClass: 'bg-1',
-    titulo: 'Entrenamiento Adaptativo',
-    descripcion: 'No creemos en rutinas genéricas. Ajustamos cada sesión según tu fatiga y progreso real medido por tecnología.',
-  },
-  {
-    img: './carrousel/julian-nutricion.png',
-    alt: 'Nutrición',
-    icono: 'fa-utensils',
-    iconoClass: 'bg-1',
-    titulo: 'Nutrición Evolutiva',
-    descripcion: 'Planificación enfocada en el rendimiento y la composición corporal sostenible. Hábitos, no dietas.',
-    profesional: 'Julian Amduni',
-  },
-  {
-    img: './carrousel/recovery-rehabilitacion.png',
-    alt: 'Kinesiología',
-    icono: 'fa-user-md',
-    iconoClass: 'bg-1',
-    titulo: 'Rehabilitación',
-    descripcion: 'Kinesiología aplicada al deporte. Reeducamos el movimiento para evitar lesiones y mejorar tu técnica.',
-  },
-  {
-    img: './carrousel/personalizado-50.png',
-    alt: 'Adulto Mayor',
-    objectPosition: 'center 20%',
-    icono: 'fa-heartbeat',
-    iconoClass: 'bg-1',
-    titulo: 'Personalizado +50',
-    descripcion: 'Un profesional 100% dedicado a acompañarte, cuidarte y motivarte. Entrenamiento adaptado para mejorar tu calidad de vida, movilidad y longevidad.',
-  },
-  {
-    img: './carrousel/preparacion-futbol.png',
-    alt: 'Fútbol',
-    icono: 'fa-futbol',
-    iconoClass: 'bg-1',
-    titulo: 'Preparación Futbolística',
-    descripcion: 'Clases personalizadas exclusivas para jugadores de fútbol. Optimizamos tu fuerza, agilidad, velocidad y resistencia para rendir al máximo en la cancha.',
-    profesional: 'Raul Veron',
-  },
-  {
-    img: '/carrousel/influencia-deportiva.png',
-    alt: 'Sponsoreos',
-    icono: 'fa-handshake',
-    iconoClass: 'bg-1',
-    titulo: 'Sponsoreos y Clubes',
-    descripcion: 'Acompañamos a los mejores atletas, academias e instituciones deportivas hacia su máximo potencial físico y competitivo.',
-  },
-];
-
-const servicios = [...serviciosBase, ...serviciosBase, ...serviciosBase, ...serviciosBase, ...serviciosBase];
+import { db } from '../firebase';
+import { collection, getDocs } from 'firebase/firestore';
 
 export default function Servicios() {
   const wrapperRef = useRef(null);
   const trackRef = useRef(null);
   const [isPaused, setIsPaused] = useState(false);
+  const [serviciosBase, setServiciosBase] = useState([]);
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    const fetchServicios = async () => {
+      try {
+        const snapshot = await getDocs(collection(db, 'servicios'));
+        let data = snapshot.docs.map(doc => ({ id: doc.id, ...doc.data() }));
+        data = data.filter(s => s.activo !== false);
+        data.sort((a, b) => a.order - b.order);
+        setServiciosBase(data);
+      } catch (error) {
+        console.error("Error al obtener servicios:", error);
+      } finally {
+        setLoading(false);
+      }
+    };
+    fetchServicios();
+  }, []);
 
   const scrollNext = () => {
     if (wrapperRef.current) {
       wrapperRef.current.scrollBy({ left: 200, behavior: 'smooth' });
     }
   };
+
+  if (loading) {
+    return <section id="servicios" className="servicios-section relative min-h-[400px] flex items-center justify-center"><div className="text-white">Cargando servicios...</div></section>;
+  }
+
+  if (serviciosBase.length === 0) {
+    return <section id="servicios" className="servicios-section relative min-h-[400px] flex items-center justify-center"><div className="text-white">No hay servicios disponibles.</div></section>;
+  }
+
+  // Duplicate for infinite carousel effect
+  const servicios = [...serviciosBase, ...serviciosBase, ...serviciosBase, ...serviciosBase, ...serviciosBase];
 
   return (
     <section id="servicios" className="servicios-section relative">
@@ -97,15 +73,15 @@ export default function Servicios() {
       >
         <div className={`flex carousel-track${isPaused ? ' paused' : ''}`} ref={trackRef}>
           {servicios.map((s, idx) => (
-            <div key={`${s.titulo}-${idx}`} className="service-card relative">
+            <div key={`${s.id}-${idx}`} className="service-card relative">
               <img src={s.img} className="service-card-img absolute" alt={s.alt} draggable="false" style={s.objectPosition ? { objectPosition: s.objectPosition } : undefined} />
               <div className="service-card-overlay absolute" />
               <div className="service-card-hint absolute flex items-center justify-center">
                 <i className="fas fa-plus" />
               </div>
               <div className="service-card-content absolute flex flex-col justify-end p-8">
-                <div className={`flex items-center justify-center mb-5 service-card-icon ${s.iconoClass}`}>
-                  <i className={`fas ${s.icono}`} />
+                <div className={`flex items-center justify-center mb-5 service-card-icon ${s.iconoClass || 'bg-1'}`}>
+                  <i className={`fas ${s.icono || 'fa-star'}`} />
                 </div>
                 <h4 className="service-card-title mb-0">
                   {s.titulo}
