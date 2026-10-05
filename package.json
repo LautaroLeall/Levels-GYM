@@ -13,8 +13,12 @@
     "@fortawesome/fontawesome-free": "^7.2.0",
     "@tailwindcss/vite": "^4.2.1",
     "aos": "^2.3.4",
+    "firebase": "^12.19.0",
     "react": "^19.2.0",
     "react-dom": "^19.2.0",
+    "react-router-dom": "^7.18.4",
+    "sweetalert2": "^11.26.25",
+    "sweetalert2-react-content": "^5.1.2",
     "tailwindcss": "^4.2.1"
   },
   "devDependencies": {
