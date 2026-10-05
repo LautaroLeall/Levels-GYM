@@ -1,81 +1,13 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import '../styles/Planes.css';
-
-const planes = [
-  {
-    nombre: 'Mensual',
-    subtitulo: 'Ideal para empezar tu camino.',
-    precios: [
-      { monto: '$54.000', metodo: 'Efectivo', sizeClass: 'size-2xl' },
-      { monto: '$56.000', metodo: 'Transferencia', small: true },
-    ],
-    cuotas: null,
-    beneficios: [
-      'Acceso libre sedes YB y Centro',
-      'Planificación personalizada según tus objetivos',
-    ],
-    ctaTexto: 'Seleccionar Plan',
-    ctaClass: 'filled',
-    benefitClass: 'light',
-  },
-  {
-    nombre: 'Trimestral',
-    subtitulo: 'Compromiso real con tus resultados.',
-    precios: [
-      { monto: '$148.000', metodo: 'Efectivo', sizeClass: 'size-2xl' },
-    ],
-    cuotas: null,
-    beneficios: [
-      'Acceso libre sedes YB y Centro',
-      'Planificación personalizada según tus objetivos',
-    ],
-    ctaTexto: 'Adquirir Ahora',
-    ctaClass: 'filled',
-    benefitClass: 'light',
-  },
-  {
-    nombre: 'Semestral',
-    subtitulo: 'Transformación total garantizada.',
-    precios: [
-      { monto: '$288.000', metodo: 'Efectivo', sizeClass: 'size-2xl' },
-    ],
-    cuotas: '3 Cuotas de $96.000',
-    beneficios: [
-      'Planificación personalizada según tus objetivos',
-      'Evaluación tecnológica de fuerza y potencia',
-      'Descuento preferencial en sesiones de sauna y recovery',
-    ],
-    ctaTexto: 'Seleccionar Plan',
-    ctaClass: 'filled',
-    benefitClass: 'light compact',
-  },
-  {
-    nombre: 'Anual',
-    subtitulo: 'El compromiso máximo, el mejor precio.',
-    precios: [
-      {
-        monto: '$531.000 ',
-        metodo: 'Efectivo',
-        sizeClass: 'size-2xl',
-        cuotas: '3 Cuotas de $177.000'
-      },
-    ],
-    cuotas: null,
-    beneficios: [
-      'Planificación personalizada según tus objetivos',
-      'Evaluación tecnológica de fuerza y potencia',
-      'Descuento preferencial en sesiones de sauna y recovery',
-    ],
-    ctaTexto: 'Adquirir Ahora',
-    ctaClass: 'filled',
-    benefitClass: 'light compact',
-  },
-];
+import { db } from '../firebase';
+import { collection, getDocs } from 'firebase/firestore';
 
 function PlanCard({ plan }) {
   const [metodo, setMetodo] = useState(0);
-  const precio = plan.precios[metodo];
-  const cuotasRender = precio.cuotas || plan.cuotas;
+  // Safe defaults if precios are missing
+  const precio = plan.precios && plan.precios.length > 0 ? plan.precios[metodo] : { monto: '', metodo: '' };
+  const cuotasRender = plan.cuotas;
 
   const handleSeleccionar = () => {
     sessionStorage.setItem('planSeleccionado', JSON.stringify({
@@ -94,7 +26,7 @@ function PlanCard({ plan }) {
       <h3 className="plan-name">{plan.nombre}</h3>
       <p className="plan-desc">{plan.subtitulo}</p>
 
-      {plan.precios.length > 1 ? (
+      {plan.precios && plan.precios.length > 1 ? (
         <div className="plan-metodo-toggle">
           {plan.precios.map((p, idx) => (
             <button
@@ -124,21 +56,13 @@ function PlanCard({ plan }) {
         </div>
         {cuotasRender && (
           <div className="flex flex-wrap gap-1">
-            {Array.isArray(cuotasRender) ? (
-              cuotasRender.map((cuota, idx) => (
-                <div key={idx} className="plan-cuota-badge">
-                  {cuota}
-                </div>
-              ))
-            ) : (
-              <div className="plan-cuota-badge">{cuotasRender}</div>
-            )}
+            <div className="plan-cuota-badge">{cuotasRender}</div>
           </div>
         )}
       </div>
 
       <ul className={`plan-benefits ${plan.benefitClass}`}>
-        {plan.beneficios.map((b, i) => (
+        {plan.beneficios && plan.beneficios.map((b, i) => (
           <li key={i}>
             <i className="fas fa-check"></i>
             {b}
@@ -146,7 +70,7 @@ function PlanCard({ plan }) {
         ))}
       </ul>
 
-      <button onClick={handleSeleccionar} className={`plan-cta ${plan.ctaClass}`}>
+      <button onClick={handleSeleccionar} className={`plan-cta ${plan.ctaClass || 'filled'}`}>
         Contratar — <i className={precio.metodo === 'Efectivo' ? 'fas fa-money-bill-wave' : 'fas fa-mobile-alt'} style={{ marginLeft: '4px' }}></i>
       </button>
     </div>
@@ -154,8 +78,37 @@ function PlanCard({ plan }) {
 }
 
 export default function Planes() {
+  const [planes, setPlanes] = useState([]);
   const [current, setCurrent] = useState(0);
   const [dir, setDir] = useState('right');
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    const fetchPlanes = async () => {
+      try {
+        const snapshot = await getDocs(collection(db, 'planes'));
+        let planesData = snapshot.docs.map(doc => ({ id: doc.id, ...doc.data() }));
+        // Filtrar planes inactivos
+        planesData = planesData.filter(plan => plan.activo !== false);
+        planesData.sort((a, b) => a.order - b.order);
+        setPlanes(planesData);
+      } catch (error) {
+        console.error("Error al obtener planes:", error);
+      } finally {
+        setLoading(false);
+      }
+    };
+    fetchPlanes();
+  }, []);
+
+  if (loading) {
+    return <section id="planes" className="planes relative flex items-center justify-center min-h-125"><div className="text-white">Cargando planes...</div></section>;
+  }
+
+  if (planes.length === 0) {
+    return <section id="planes" className="planes relative flex items-center justify-center min-h-125"><div className="text-white">No hay planes disponibles.</div></section>;
+  }
+
   const n = planes.length;
   const prevIdx = (current - 1 + n) % n;
   const nextIdx = (current + 1) % n;
